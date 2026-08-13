@@ -1,0 +1,290 @@
+# ==============================================================================
+# Strategus Analysis Specification
+# Targets:   311, 312
+# Outcomes:  253, 257, 260, 261, 258  (episodic; 3-year/1095-day washout)
+#
+# Verified against the pinned package versions in renv-2.lock:
+#   Strategus 1.4.1 (GitHub ohdsi/Strategus v1.4.1)
+#   CohortIncidence 4.1.0 (GitHub ohdsi/CohortIncidence v4.1.0)
+#   CohortGenerator 0.12.2 (CRAN)
+#   CohortDiagnostics 3.4.2 (GitHub ohdsi/CohortDiagnostics v3.4.2)
+#   CohortMethod 5.5.1 (GitHub ohdsi/CohortMethod v5.5.1)
+#   FeatureExtraction 3.11.0 (CRAN)
+#   ParallelLogger 3.5.0 (CRAN)
+# The exact source of each module's createModuleSpecifications() was pulled
+# from the v1.4.1 tag of github.com/OHDSI/Strategus to confirm argument names
+# match this environment (some argument names differ from the "latest"
+# Strategus docs, e.g. CohortGeneratorModule$createModuleSpecifications() in
+# 1.4.1 only takes `generateStats`, not `incremental`).
+#
+# Modules used:
+#   - CohortGeneratorModule    -> generates the target & outcome cohorts
+#   - CohortDiagnosticsModule  -> standard phenotype diagnostics (inclusion
+#                                  rule stats, orphan concepts, incidence
+#                                  rates, temporal characterization) using
+#                                  CohortDiagnostics' own standard
+#                                  FeatureExtraction covariate set
+#                                  (CohortDiagnostics::getDefaultCovariateSettings())
+#   - CohortIncidenceModule    -> incidence rates (T x O x TAR), with a
+#                                1095-day cleanWindow per outcome. This is
+#                                what makes outcomes "episodic" (>1095 days
+#                                apart = separate incident episode) AND
+#                                excludes patients whose prior outcome falls
+#                                within the 3 years before their index date.
+#   - CohortMethodModule     -> genuine Kaplan-Meier curves comparing target
+#                                311 vs comparator 312 for each outcome, with
+#                                a matching 1095-day priorOutcomeLookback.
+#                                NOTE: a KM curve is inherently a time-to-
+#                                FIRST-qualifying-event survival function
+#                                (this is true of every OHDSI/HADES tool, not
+#                                a limitation specific to this script) - the
+#                                *episodic* (repeated-entry) counting of the
+#                                outcome lives in the CohortIncidence module
+#                                above. Characterization's "Time to Event"
+#                                analysis was deliberately NOT used here: at
+#                                the pinned Characterization 2.2.0, it is a
+#                                symmetric histogram of event counts around
+#                                the index date (no risk set, no censoring,
+#                                no washout support) - not a true KM/survival
+#                                curve, and it does not accept an
+#                                outcomeWashoutDays-equivalent setting.
+# ==============================================================================
+
+# renv::restore()  # run once against this project's renv-2.lock
+library(Strategus)
+library(dplyr)
+
+# ------------------------------------------------------------------------------
+# 0. Study settings
+# ------------------------------------------------------------------------------
+targetIds       <- c(311, 312)
+outcomeIds      <- c(253, 257, 260, 261, 258)
+cleanWindowDays <- 365 * 3   # 1095 days = 3-year washout / minimum episode gap
+outputFolder    <- "inst/analysisSpecification"
+dir.create(outputFolder, showWarnings = FALSE, recursive = TRUE)
+
+# ------------------------------------------------------------------------------
+# 1. Cohort definitions & names - sourced from the local study package
+#    (inst/settings/CohortsToCreate.csv: atlasId, cohortId, cohortName), with
+#    the circe JSON/SQL in inst/cohorts/ and inst/sql/sql_server/
+# ------------------------------------------------------------------------------
+cohortsToCreate <- CohortGenerator::readCsv(file = "inst/settings/CohortsToCreate.csv")
+
+allCohortIds <- c(targetIds, outcomeIds)
+missingIds <- setdiff(allCohortIds, cohortsToCreate$cohortId)
+if (length(missingIds) > 0) {
+  stop("The following cohortIds are not in inst/settings/CohortsToCreate.csv: ",
+       paste(missingIds, collapse = ", "))
+}
+
+cohortNameFor <- function(id) {
+  cohortsToCreate$cohortName[cohortsToCreate$cohortId == id][1]
+}
+targetNames  <- sapply(targetIds, cohortNameFor)
+outcomeNames <- sapply(outcomeIds, cohortNameFor)
+
+# Full cohort definition set (json + sql) for the target & outcome cohorts,
+# loaded from the study package's own settings/cohorts/sql folders.
+cohortDefinitionSet <- CohortGenerator::getCohortDefinitionSet(
+  settingsFileName = "inst/settings/CohortsToCreate.csv",
+  jsonFolder       = "inst/cohorts",
+  sqlFolder        = "inst/sql/sql_server",
+  packageName      = NULL
+) %>%
+  dplyr::filter(cohortId %in% allCohortIds)
+
+# ------------------------------------------------------------------------------
+# 2. CohortGenerator module - generates targets + outcomes in the CDM
+#    (v1.4.1 createModuleSpecifications() only accepts `generateStats`)
+# ------------------------------------------------------------------------------
+cgModule <- CohortGeneratorModule$new()
+
+cohortDefinitionSharedResource <- cgModule$createCohortSharedResourceSpecifications(
+  cohortDefinitionSet = cohortDefinitionSet
+)
+
+cohortGeneratorModuleSpecifications <- cgModule$createModuleSpecifications(
+  generateStats = TRUE
+)
+
+# ------------------------------------------------------------------------------
+# 3. CohortDiagnostics module - standard phenotype diagnostics for all 7
+#    cohorts (targets + outcomes): inclusion rule stats, orphan concepts,
+#    visit context, incidence rates, cohort relationship, and temporal
+#    characterization using CohortDiagnostics' own standard covariate set
+#    (the "standard feature extraction" for diagnostics, as opposed to the
+#    covariateSettings used inside CohortMethod below).
+# ------------------------------------------------------------------------------
+cdModule <- CohortDiagnosticsModule$new()
+
+cohortDiagnosticsModuleSpecifications <- cdModule$createModuleSpecifications(
+  cohortIds                         = allCohortIds,
+  runInclusionStatistics            = TRUE,
+  runIncludedSourceConcepts         = TRUE,
+  runOrphanConcepts                 = TRUE,
+  runTimeSeries                     = FALSE,
+  runVisitContext                   = TRUE,
+  runBreakdownIndexEvents           = TRUE,
+  runIncidenceRate                  = TRUE,
+  runCohortRelationship             = TRUE,
+  runTemporalCohortCharacterization = TRUE,
+  temporalCovariateSettings         = CohortDiagnostics::getDefaultCovariateSettings(),
+  minCharacterizationMean           = 0.01,
+  irWashoutPeriod                   = 0
+)
+
+# ------------------------------------------------------------------------------
+# 4. CohortIncidence module - incidence rates for T x O x TAR
+# ------------------------------------------------------------------------------
+ciModule <- CohortIncidenceModule$new()
+
+targetDefs <- lapply(seq_along(targetIds), function(i) {
+  CohortIncidence::createCohortRef(id = i, name = targetNames[i], cohortId = targetIds[i])
+})
+
+# cleanWindow makes every outcome episodic AND excludes anyone whose prior
+# outcome occurrence falls within the 3-year (1095-day) window before index.
+outcomeDefs <- lapply(seq_along(outcomeIds), function(i) {
+  CohortIncidence::createOutcomeDef(
+    id          = i,
+    name        = paste0(outcomeNames[i], " (episodic, 1095d clean window)"),
+    cohortId    = outcomeIds[i],
+    cleanWindow = cleanWindowDays
+  )
+})
+
+# Time-at-risk: full persistence of the target cohort era (start -> end).
+tarDefs <- list(
+  CohortIncidence::createTimeAtRiskDef(
+    id = 1, startWith = "start", startOffset = 0,
+    endWith = "end", endOffset = 0
+  )
+)
+
+analysisList <- list(
+  CohortIncidence::createIncidenceAnalysis(
+    targets  = seq_along(targetIds),
+    outcomes = seq_along(outcomeIds),
+    tars     = c(1)
+  )
+)
+
+irDesign <- CohortIncidence::createIncidenceDesign(
+  targetDefs    = targetDefs,
+  outcomeDefs   = outcomeDefs,
+  tars          = tarDefs,
+  analysisList  = analysisList,
+  strataSettings = CohortIncidence::createStrataSettings(
+    byYear   = TRUE,
+    byGender = TRUE
+  )
+)
+
+cohortIncidenceModuleSpecifications <- ciModule$createModuleSpecifications(
+  irDesign = irDesign$toList()
+)
+
+# ------------------------------------------------------------------------------
+# 5. CohortMethod module - genuine Kaplan-Meier curves, target 311 vs
+#    comparator 312, one outcome model per outcome, crude/unadjusted (no PS
+#    matching), with priorOutcomeLookback = 1095 applying the same 3-year
+#    exclusion rule used for incidence rates.
+# ------------------------------------------------------------------------------
+cmModule <- CohortMethodModule$new()
+
+outcomesOfInterest <- lapply(outcomeIds, function(oid) {
+  CohortMethod::createOutcome(
+    outcomeId             = oid,
+    outcomeOfInterest     = TRUE,
+    priorOutcomeLookback  = cleanWindowDays,  # 3y washout: prevalent cases excluded
+    riskWindowStart       = 0,
+    startAnchor           = "cohort start",
+    riskWindowEnd         = 0,
+    endAnchor             = "cohort end"      # full cohort persistence, matches TAR above
+  )
+})
+
+tcos <- CohortMethod::createTargetComparatorOutcomes(
+  targetId     = targetIds[1],   # 311
+  comparatorId = targetIds[2],   # 312
+  outcomes     = outcomesOfInterest
+)
+
+targetComparatorOutcomesList <- list(tcos)
+
+covarSettings <- FeatureExtraction::createDefaultCovariateSettings()
+
+getDbCmDataArgs <- CohortMethod::createGetDbCohortMethodDataArgs(
+  washoutPeriod           = 365,
+  firstExposureOnly       = TRUE,
+  removeDuplicateSubjects = "remove all",
+  covariateSettings       = covarSettings
+)
+
+createStudyPopArgs <- CohortMethod::createCreateStudyPopulationArgs(
+  minDaysAtRisk = 1,
+  riskWindowStart = 0,
+  startAnchor = "cohort start",
+  riskWindowEnd = 0,
+  endAnchor = "cohort end"
+)
+
+fitOutcomeModelArgs <- CohortMethod::createFitOutcomeModelArgs(modelType = "cox")
+
+cmAnalysis1 <- CohortMethod::createCmAnalysis(
+  analysisId              = 1,
+  description             = "Crude/unadjusted comparison of 311 vs 312 (no PS matching) - Kaplan-Meier + Cox",
+  getDbCohortMethodDataArgs = getDbCmDataArgs,
+  createStudyPopArgs      = createStudyPopArgs,
+  fitOutcomeModelArgs     = fitOutcomeModelArgs
+)
+
+cmAnalysisList <- list(cmAnalysis1)
+
+cohortMethodModuleSpecifications <- cmModule$createModuleSpecifications(
+  cmAnalysisList = cmAnalysisList,
+  targetComparatorOutcomesList = targetComparatorOutcomesList
+)
+
+# ------------------------------------------------------------------------------
+# 6. Assemble & save the full analysis specification
+# ------------------------------------------------------------------------------
+analysisSpecifications <- createEmptyAnalysisSpecificiations() %>%
+  addSharedResources(cohortDefinitionSharedResource) %>%
+  addModuleSpecifications(cohortGeneratorModuleSpecifications) %>%
+  addModuleSpecifications(cohortDiagnosticsModuleSpecifications) %>%
+  addModuleSpecifications(cohortIncidenceModuleSpecifications) %>%
+  addModuleSpecifications(cohortMethodModuleSpecifications)
+
+ParallelLogger::saveSettingsToJson(
+  analysisSpecifications,
+  file.path(outputFolder, "analysisSpecification.json")
+)
+
+# ------------------------------------------------------------------------------
+# 7. Execute (run on a separate machine/session with DB access) & view results
+# ------------------------------------------------------------------------------
+# connectionDetails <- DatabaseConnector::createConnectionDetails(...)
+#
+# executionSettings <- createCdmExecutionSettings(
+#   workDatabaseSchema      = "scratch.dbo",
+#   cdmDatabaseSchema       = "cdm.dbo",
+#   cohortTableNames        = CohortGenerator::getCohortTableNames(cohortTable = "my_study_cohort"),
+#   workFolder              = "work",
+#   resultsFolder           = "results",
+#   minCellCount            = 5
+# )
+#
+# Strategus::execute(
+#   analysisSpecifications = analysisSpecifications,
+#   executionSettings      = executionSettings,
+#   connectionDetails      = connectionDetails
+# )
+#
+# Results (cd_* tables from CohortDiagnostics, ci_incidence_summary from
+# CohortIncidence, cm_kaplan_meier_dist / cm_cohort_method_result from
+# CohortMethod) can be uploaded to a results database and viewed with
+# OhdsiShinyModules / OhdsiShinyAppBuilder (both are in renv-2.lock), which
+# render the CohortDiagnostics phenotype-evaluation tabs, the incidence-rate
+# tables, and the Kaplan-Meier plots for the CohortMethod ("Population Level
+# Estimation") results.

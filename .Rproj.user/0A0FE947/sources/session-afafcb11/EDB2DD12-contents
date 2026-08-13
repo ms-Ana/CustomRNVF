@@ -1,0 +1,14 @@
+base.path <- "/Users/andreikiselev/Documents/Research_Questions/Localized_PC/"
+
+sqliteDbPath <- file.path(base.path, "MergedCohortDiagnosticsData.sqlite")
+
+CohortDiagnostics::createMergedResultsFile(
+  dataFolder   = file.path(base.path, "Exports"),   # recurses into output/<databaseId>/diagnosticsExport
+  sqliteDbPath = sqliteDbPath,
+  overwrite    = TRUE
+)
+
+
+CohortDiagnostics::launchDiagnosticsExplorer(
+  sqliteDbPath = "/Users/andreikiselev/Documents/Research_Questions/Localized_PC/MergedCohortDiagnosticsData.sqlite"
+)

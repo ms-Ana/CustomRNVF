@@ -1,0 +1,29 @@
+Package: CustomRNVF
+Type: Package
+Title: OHDSI Study: Cohort Generation, Diagnostics, Characterization and Incidence Rate
+Version: 1.0.0
+Date: 2026-06-22
+Authors@R: person("Andrei", "Kiselev", email = "kiselev.eco@gmail.com", role = c("aut", "cre"))
+Maintainer: Andrei Kiselev <kiselev.eco@gmail.com>
+Description: A self-contained OHDSI study package that runs cohort generation,
+    CohortDiagnostics, Characterization, and incidence rate calculation against an
+    OMOP CDM. The package contains only orchestration logic; all analytics and SQL
+    are produced by the underlying OHDSI packages. Run the study by calling
+    execute() (see extras/CodeToRun.R).
+License: Apache License 2.0
+Depends:
+    R (>= 4.4.0)
+Imports:
+    CohortGenerator (>= 0.12.2),
+    CohortDiagnostics (>= 3.4.2),
+    Characterization (>= 2.2.0),
+    CohortIncidence (>= 4.1.0),
+    FeatureExtraction (>= 3.11.0),
+    DatabaseConnector (>= 7.0.0),
+    SqlRender (>= 1.19.4),
+    ParallelLogger (>= 3.5.0)
+Suggests:
+    ROhdsiWebApi (>= 1.3.3),
+    renv
+Encoding: UTF-8
+RoxygenNote: 7.3.3
