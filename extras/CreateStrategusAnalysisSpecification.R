@@ -22,8 +22,8 @@ suppressPackageStartupMessages(library(Strategus))
 # characterization case series and the incidence-rate target x outcome pairings.
 # Every id below must exist in CohortsToCreate.csv, and an id cannot be both a
 # target and an outcome. The script validates this before building anything.
-targetIds  <- c()
-outcomeIds <- c()
+targetIds  <- c(312, 311)
+outcomeIds <- c(253, 257, 260, 261, 258)
 
 outputFile <- "extras/StrategusAnalysisSpecification.json"
 # ===========================================================================

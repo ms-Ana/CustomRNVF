@@ -1,11 +1,8 @@
 atlasId,cohortId,cohortName
-1741,1741,Falls_Episodes (Episodic)
-1742,1742,Sepsis
-1743,1743,"Cognitive disturbance (memory impairment, depressive disorders)"
-1744,1744,Chronic heart failure (including peripheral oedema)
-1745,1745,Cerebral Event (stroke and hemorrhage)
-1746,1746,Hot flashes
-1740,1740,Thromboembolism (thromboembolism and pulmonary embolism)
-1739,1739,Rash or pruritus (Episodic)
-1738,1738,Abnormal hepatic function
-1747,1747,Urinary tract infections (Episodic)
+312,312,Patient 2_LCa_with CKD
+311,311,Patient 2_LCa_without CKD
+253,253,LCa_RQ2-outcome (death)
+257,257,LCa_RQ2-outcome (SAE_hospit or ER)
+260,260,LCa_RQ2-outcome (SAE_sepsis)
+261,261,LCa_RQ2-outcome (SAE_VTE)
+258,258,LCa_RQ2-outcome (SAE_resp infections)

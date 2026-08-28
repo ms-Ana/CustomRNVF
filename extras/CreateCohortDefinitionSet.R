@@ -16,10 +16,10 @@ library(ROhdsiWebApi)
 
 #base.url <- "https://optima-rc.hzdr.de/WebAPI"
 #base.url <- "https://optima-rc.hzdr.de:9443/WebAPI"
-base.url <- "https://pioneer.hzdr.de/WebAPI"
-token <- "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbmRyZWkua2lzZWxldkBiZG1jb25zdWx0aW5nLmZyIiwiU2Vzc2lvbi1JRCI6bnVsbCwiZXhwIjoxNzg0NzQ3MzIyfQ.KYn1m8Aj9YkCtVUiQ6QGWXfAQMe60nrxJfmoELOrpMPrdp_iTMQcveplqof9oQoWqps4RM1jqMpt23L_D5w5nA"
+my_browser_token <- "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhLmRlcnpoYW5za2FpYUBoemRyLmRlIiwiU2Vzc2lvbi1JRCI6bnVsbCwiZXhwIjoxNzg3MjY0Mjk1fQ.A5t9NKXQLjuAUGBW0CGZuksu38IeXufhWVZ8KTq6pc0MgMWOIIIJ9hOkbN7qKsY0t1-NfIHACfRqzf4m-F-CoQ" 
+baseUrl <- "https://optima.hzdr.de:9443/WebAPI"
 
-ROhdsiWebApi::setAuthHeader(base.url, token)
+ROhdsiWebApi::setAuthHeader(baseUrl, my_browser_token)
 
 # ---- Pull cohorts into inst/ --------------------------------------------------
 # Reads inst/settings/CohortsToCreate.csv, fetches each cohort's expression from
