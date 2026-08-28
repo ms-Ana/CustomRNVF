@@ -13,10 +13,7 @@
 
 library(ROhdsiWebApi)
 
-
-#base.url <- "https://optima-rc.hzdr.de/WebAPI"
-#base.url <- "https://optima-rc.hzdr.de:9443/WebAPI"
-my_browser_token <- "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhLmRlcnpoYW5za2FpYUBoemRyLmRlIiwiU2Vzc2lvbi1JRCI6bnVsbCwiZXhwIjoxNzg3MjY0Mjk1fQ.A5t9NKXQLjuAUGBW0CGZuksu38IeXufhWVZ8KTq6pc0MgMWOIIIJ9hOkbN7qKsY0t1-NfIHACfRqzf4m-F-CoQ" 
+my_browser_token <- "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhLmRlcnpoYW5za2FpYUBoemRyLmRlIiwiU2Vzc2lvbi1JRCI6bnVsbCwiZXhwIjoxNzg3OTQzNzU3fQ.Ja8teUy_o48xFkx4x7OLzAhy3m04oI0HB9Wq7yBAkG8lkEOTC9vqLLjgKxLYkNuru_UNI8cTwUqhXekWWgJ9Xw" 
 baseUrl <- "https://optima.hzdr.de:9443/WebAPI"
 
 ROhdsiWebApi::setAuthHeader(baseUrl, my_browser_token)
@@ -27,7 +24,7 @@ ROhdsiWebApi::setAuthHeader(baseUrl, my_browser_token)
 # inst/sql/sql_server, and records the file references.
 ROhdsiWebApi::insertCohortDefinitionSetInPackage(
   fileName = "inst/settings/CohortsToCreate.csv",
-  baseUrl = base.url,
+  baseUrl = baseUrl,
   jsonFolder = "inst/cohorts",
   sqlFolder = "inst/sql/sql_server",
   insertTableSql = TRUE,
