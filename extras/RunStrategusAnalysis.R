@@ -2,7 +2,7 @@ library(Strategus)
 library(DatabaseConnector)
 
 
-jsonFilePath <- "./StrategusAnalysisSpecification.json"
+jsonFilePath <- "./extras/StrategusAnalysisSpecification.json"
 analysisSpecifications <- ParallelLogger::loadSettingsFromJson(jsonFilePath)
 
 envkeyring <- keyring::backend_env$new()
@@ -18,16 +18,15 @@ options(connectionObserver = NULL)
 conn <- DatabaseConnector::connect(connectionDetails)
 
 
-workDatabaseSchema <- ""
-cdmDatabaseSchema <- ""
-workFolder <- ""
-resultsFolder <- ""
+workDatabaseSchema <- "anastasiiaderzhanskaia"
+cdmDatabaseSchema <- "cdm_lungcancer_syth10k_251104"
+workFolder <- "work"
+resultsFolder <- "outputs"
 executionSettings <- Strategus::createCdmExecutionSettings(
-  connectionDetailsReference = connectionDetails,
   workDatabaseSchema = workDatabaseSchema, 
   cdmDatabaseSchema = cdmDatabaseSchema,      
   cohortTableNames = CohortGenerator::getCohortTableNames(cohortTable = "custom_rnvf_cohorts"),
-  workFolder =  workFolder,   
+  workFolder = workFolder,   
   resultsFolder = resultsFolder,    
   minCellCount = 5                            
 )
