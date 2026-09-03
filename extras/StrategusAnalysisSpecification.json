@@ -50,64 +50,215 @@
       "attr_class": ["ModuleSpecifications", "CohortGeneratorModuleSpecifications"]
     },
     {
-      "module": "CohortDiagnosticsModule",
+      "module": "CohortMethodModule",
       "settings": {
-        "runInclusionStatistics": true,
-        "runIncludedSourceConcepts": true,
-        "runOrphanConcepts": true,
-        "runTimeSeries": false,
-        "runVisitContext": true,
-        "runBreakdownIndexEvents": true,
-        "runIncidenceRate": true,
-        "runCohortRelationship": true,
-        "runTemporalCohortCharacterization": true,
-        "temporalCovariateSettings": {
-          "temporal": true,
-          "temporalSequence": false,
-          "DemographicsGender": true,
-          "DemographicsAge": true,
-          "DemographicsAgeGroup": true,
-          "DemographicsRace": true,
-          "DemographicsEthnicity": true,
-          "DemographicsIndexYear": true,
-          "DemographicsIndexMonth": true,
-          "DemographicsPriorObservationTime": true,
-          "DemographicsPostObservationTime": true,
-          "DemographicsTimeInCohort": true,
-          "DemographicsIndexYearMonth": true,
-          "ConditionOccurrence": true,
-          "ConditionEraStart": true,
-          "ConditionEraOverlap": true,
-          "ConditionEraGroupStart": true,
-          "ConditionEraGroupOverlap": true,
-          "DrugEraStart": true,
-          "DrugEraGroupStart": true,
-          "DrugEraGroupOverlap": true,
-          "ProcedureOccurrence": true,
-          "DeviceExposure": true,
-          "Measurement": true,
-          "MeasurementRangeGroup": true,
-          "MeasurementValueAsConcept": true,
-          "Observation": true,
-          "ObservationValueAsConcept": true,
-          "CharlsonIndex": true,
-          "Dcsi": true,
-          "Chads2": true,
-          "Chads2Vasc": true,
-          "temporalStartDays": [-9999, -365, -180, -30, -365, -30, 0, 1, 31, -9999],
-          "temporalEndDays": [0, 0, 0, 0, -31, -1, 0, 30, 365, 9999],
-          "includedCovariateConceptIds": [],
-          "addDescendantsToInclude": false,
-          "excludedCovariateConceptIds": [],
-          "addDescendantsToExclude": false,
-          "includedCovariateIds": [],
-          "attr_class": "covariateSettings",
-          "attr_fun": "getDbDefaultCovariateData"
-        },
-        "minCharacterizationMean": 0.01,
-        "irWashoutPeriod": 0
+        "cmAnalysisList": [
+          {
+            "analysisId": 1,
+            "description": "PS matching (1:1) and Cox/KM",
+            "getDbCohortMethodDataArgs": {
+              "studyStartDate": "",
+              "studyEndDate": "",
+              "firstExposureOnly": false,
+              "removeDuplicateSubjects": "keep all",
+              "restrictToCommonPeriod": false,
+              "washoutPeriod": 0,
+              "maxCohortSize": 0,
+              "covariateSettings": {
+                "temporal": false,
+                "temporalSequence": false,
+                "DemographicsGender": true,
+                "DemographicsAgeGroup": true,
+                "DemographicsRace": true,
+                "DemographicsEthnicity": true,
+                "ConditionEraLongTerm": true,
+                "ConditionEraShortTerm": true,
+                "ConditionGroupEraLongTerm": true,
+                "ConditionGroupEraShortTerm": true,
+                "DrugEraLongTerm": true,
+                "DrugEraShortTerm": true,
+                "DrugGroupEraLongTerm": true,
+                "DrugGroupEraShortTerm": true,
+                "ProcedureOccurrenceLongTerm": true,
+                "ProcedureOccurrenceShortTerm": true,
+                "longTermStartDays": -365,
+                "mediumTermStartDays": -180,
+                "shortTermStartDays": -30,
+                "endDays": 0,
+                "includedCovariateConceptIds": [],
+                "addDescendantsToInclude": false,
+                "excludedCovariateConceptIds": [3016723, 3013682, 3023103, 3019550, 3014576, 3006906, 3004501, 3015632, 21600722, 21600728, 21600713, 21600712, 21600735, 19017810, 1596977, 21603783, 46221581, 21600714, 21600001],
+                "addDescendantsToExclude": true,
+                "includedCovariateIds": [],
+                "attr_class": "covariateSettings",
+                "attr_fun": "getDbDefaultCovariateData"
+              },
+              "attr_class": "args"
+            },
+            "createStudyPopArgs": {
+              "firstExposureOnly": true,
+              "restrictToCommonPeriod": false,
+              "washoutPeriod": 0,
+              "removeDuplicateSubjects": "keep all",
+              "removeSubjectsWithPriorOutcome": true,
+              "priorOutcomeLookback": 99999,
+              "minDaysAtRisk": 1,
+              "maxDaysAtRisk": 99999,
+              "riskWindowStart": 1,
+              "startAnchor": "cohort start",
+              "riskWindowEnd": 9999,
+              "endAnchor": "cohort start",
+              "censorAtNewRiskWindow": false,
+              "attr_class": "args"
+            },
+            "createPsArgs": {
+              "maxCohortSizeForFitting": 250000,
+              "errorOnHighCorrelation": true,
+              "stopOnError": true,
+              "prior": {
+                "priorType": "laplace",
+                "variance": 1,
+                "exclude": 0,
+                "graph": null,
+                "neighborhood": null,
+                "useCrossValidation": true,
+                "forceIntercept": false,
+                "attr_class": "cyclopsPrior"
+              },
+              "control": {
+                "maxIterations": 1000,
+                "tolerance": 2e-07,
+                "convergenceType": "gradient",
+                "autoSearch": true,
+                "fold": 10,
+                "lowerLimit": 0.01,
+                "upperLimit": 20,
+                "gridSteps": 10,
+                "minCVData": 100,
+                "cvRepetitions": 1,
+                "noiseLevel": "quiet",
+                "threads": 1,
+                "seed": null,
+                "resetCoefficients": false,
+                "startingVariance": 0.01,
+                "useKKTSwindle": false,
+                "tuneSwindle": 10,
+                "selectorType": "auto",
+                "initialBound": 2,
+                "maxBoundCount": 5,
+                "algorithm": "ccd",
+                "doItAll": true,
+                "syncCV": false,
+                "attr_class": "cyclopsControl"
+              },
+              "estimator": "att",
+              "attr_class": "args"
+            },
+            "matchOnPsArgs": {
+              "caliper": 0.2,
+              "caliperScale": "standardized logit",
+              "maxRatio": 1,
+              "allowReverseMatch": false,
+              "attr_class": "args"
+            },
+            "fitOutcomeModelArgs": {
+              "modelType": "cox",
+              "stratified": true,
+              "useCovariates": false,
+              "inversePtWeighting": false,
+              "profileBounds": [-2.3026, 2.3026],
+              "prior": {
+                "priorType": "laplace",
+                "variance": 1,
+                "exclude": null,
+                "graph": null,
+                "neighborhood": null,
+                "useCrossValidation": true,
+                "forceIntercept": false,
+                "attr_class": "cyclopsPrior"
+              },
+              "control": {
+                "maxIterations": 1000,
+                "tolerance": 2e-07,
+                "convergenceType": "gradient",
+                "autoSearch": true,
+                "fold": 10,
+                "lowerLimit": 0.01,
+                "upperLimit": 20,
+                "gridSteps": 10,
+                "minCVData": 100,
+                "cvRepetitions": 10,
+                "noiseLevel": "quiet",
+                "threads": 1,
+                "seed": 1,
+                "resetCoefficients": true,
+                "startingVariance": 0.01,
+                "useKKTSwindle": false,
+                "tuneSwindle": 10,
+                "selectorType": "auto",
+                "initialBound": 2,
+                "maxBoundCount": 5,
+                "algorithm": "ccd",
+                "doItAll": true,
+                "syncCV": false,
+                "attr_class": "cyclopsControl"
+              },
+              "attr_class": "args"
+            },
+            "attr_class": "cmAnalysis"
+          }
+        ],
+        "targetComparatorOutcomesList": [
+          {
+            "targetId": 312,
+            "comparatorId": 311,
+            "outcomes": [
+              {
+                "outcomeId": 253,
+                "outcomeOfInterest": true,
+                "trueEffectSize": null,
+                "attr_class": "outcome"
+              },
+              {
+                "outcomeId": 257,
+                "outcomeOfInterest": true,
+                "trueEffectSize": null,
+                "attr_class": "outcome"
+              },
+              {
+                "outcomeId": 260,
+                "outcomeOfInterest": true,
+                "trueEffectSize": null,
+                "attr_class": "outcome"
+              },
+              {
+                "outcomeId": 261,
+                "outcomeOfInterest": true,
+                "trueEffectSize": null,
+                "attr_class": "outcome"
+              },
+              {
+                "outcomeId": 258,
+                "outcomeOfInterest": true,
+                "trueEffectSize": null,
+                "attr_class": "outcome"
+              }
+            ],
+            "attr_class": "targetComparatorOutcomes"
+          }
+        ],
+        "refitPsForEveryOutcome": false,
+        "refitPsForEveryStudyPopulation": true,
+        "cmDiagnosticThresholds": {
+          "mdrrThreshold": 10,
+          "easeThreshold": 0.25,
+          "sdmThreshold": 0.1,
+          "equipoiseThreshold": 0.2,
+          "generalizabilitySdmThreshold": 1,
+          "attr_class": "CmDiagnosticThresholds"
+        }
       },
-      "attr_class": ["ModuleSpecifications", "CohortDiagnosticsModuleSpecifications"]
+      "attr_class": ["ModuleSpecifications", "CohortMethodModuleSpecifications"]
     }
   ],
   "attr_class": "AnalysisSpecifications"

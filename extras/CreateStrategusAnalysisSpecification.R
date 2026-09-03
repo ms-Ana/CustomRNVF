@@ -123,11 +123,120 @@ cohortDiagnosticsSpecs  <- cohortDiagnosticsModule$createModuleSpecifications()
 #   irDesign = irDesign$toList()
 # )
 
+#--- Cohort Method ----------------------
+problematicConceptIds <- c(
+  3016723, 3013682, 3023103, 3019550, 3014576, 3006906, 3004501, 3015632,
+  21600722, 21600728, 21600713, 21600712, 21600735, 19017810, 1596977, 
+  21603783, 46221581, 21600714, 21600001
+)
+covariateSettings <- FeatureExtraction::createCovariateSettings(
+  useDemographicsGender = TRUE,
+  useDemographicsAgeGroup = TRUE,
+  useDemographicsRace = TRUE,
+  useDemographicsEthnicity = TRUE,
+  
+  useConditionOccurrenceLongTerm = FALSE,
+  useConditionOccurrenceShortTerm = FALSE,
+  useConditionEraLongTerm = TRUE,
+  useConditionEraShortTerm = TRUE,
+  useConditionGroupEraLongTerm = TRUE,
+  useConditionGroupEraShortTerm = TRUE,
+  
+  useDrugExposureLongTerm = FALSE,
+  useDrugExposureShortTerm = FALSE,
+  useDrugEraLongTerm = TRUE,
+  useDrugEraShortTerm = TRUE,
+  useDrugGroupEraLongTerm = TRUE,
+  useDrugGroupEraShortTerm = TRUE,
+  
+  # Procedures
+  useProcedureOccurrenceLongTerm = TRUE,
+  useProcedureOccurrenceShortTerm = TRUE,
+  
+  useCharlsonIndex = FALSE,
+  useChads2Vasc = FALSE,
+  useDcsi = FALSE,
+  
+  useMeasurementLongTerm = FALSE,
+  useMeasurementShortTerm = FALSE,
+  
+  excludedCovariateConceptIds = problematicConceptIds,
+  addDescendantsToExclude = TRUE
+)
+
+getDbCmDataArgs <- CohortMethod::createGetDbCohortMethodDataArgs(
+  covariateSettings = covariateSettings
+)
+
+createStudyPopArgs <- CohortMethod::createCreateStudyPopulationArgs(
+  firstExposureOnly = TRUE,               
+  restrictToCommonPeriod = FALSE,
+  removeSubjectsWithPriorOutcome = TRUE, 
+  minDaysAtRisk = 1,
+  riskWindowStart = 1,                    
+  startAnchor = "cohort start",
+  riskWindowEnd = 9999,                   
+  endAnchor = "cohort start"
+)
+
+createPsArgs <- CohortMethod::createCreatePsArgs(
+  control = Cyclops::createControl(
+    cvType = "auto", 
+    startingVariance = 0.01, 
+    noiseLevel = "quiet", 
+    tolerance = 2e-07, 
+    cvRepetitions = 1
+  )
+)
+
+matchOnPsArgs <- CohortMethod::createMatchOnPsArgs(
+  maxRatio = 1, 
+  caliper = 0.2
+)
+
+fitOutcomeModelArgs <- CohortMethod::createFitOutcomeModelArgs(
+  modelType = "cox",
+  stratified = TRUE
+)
+
+cmAnalysis <- CohortMethod::createCmAnalysis(
+  analysisId = 1,
+  description = "PS matching (1:1) and Cox/KM",
+  getDbCohortMethodDataArgs = getDbCmDataArgs,
+  createStudyPopArgs = createStudyPopArgs,
+  createPsArgs = createPsArgs,
+  matchOnPsArgs = matchOnPsArgs,
+  fitOutcomeModelArgs = fitOutcomeModelArgs
+)
+
+outcomes <- lapply(outcomeIds, function(outcomeId) {
+  CohortMethod::createOutcome(
+    outcomeId = outcomeId,
+    outcomeOfInterest = TRUE,
+    trueEffectSize = NA
+  )
+})
+
+targetComparatorOutcomesList <- list(
+  CohortMethod::createTargetComparatorOutcomes(
+    targetId = 312,
+    comparatorId = 311,
+    outcomes = outcomes
+  )
+)
+
+cohortMethodModule <- CohortMethodModule$new()
+cohortMethodSpecs <- cohortMethodModule$createModuleSpecifications(
+  cmAnalysisList = list(cmAnalysis),
+  targetComparatorOutcomesList = targetComparatorOutcomesList
+)
+
 # --- Assemble + serialize --------------------------------------------------
 analysisSpecifications <- createEmptyAnalysisSpecifications() |>
   addSharedResources(cohortSharedResource) |>
   addCohortGeneratorModuleSpecifications(cohortGeneratorSpecs) |>
-  addCohortDiagnosticsModuleSpecifications(cohortDiagnosticsSpecs) 
+  addModuleSpecifications(cohortMethodSpecs)
+  # addCohortDiagnosticsModuleSpecifications(cohortDiagnosticsSpecs) |>
   #addCharacterizationModuleSpecifications(characterizationSpecs) |>
   #addCohortIncidenceModuleSpecifications(cohortIncidenceSpecs)
 

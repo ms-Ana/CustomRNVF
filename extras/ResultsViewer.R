@@ -26,6 +26,15 @@
 # ---------------------------------------------------------------------------
 # Helpers (plain functions; no side effects until launchResultsViewer() runs)
 # ---------------------------------------------------------------------------
+suppressPackageStartupMessages({
+  library(shiny)
+  library(shinydashboard)
+  library(DT)
+  library(ggplot2)
+  library(plotly)
+  library(dplyr)
+  library(readr)
+})
 
 # Read a CSV if it exists, otherwise return NULL. Column names are returned
 # unchanged; callers normalise as needed.
@@ -239,6 +248,23 @@
           )
         ),
 
+        # ----  CohortMethod --------------------------------------------------
+        shinydashboard::tabItem(
+          tabName = "cm",
+          shiny::fluidRow(
+            shinydashboard::box(
+              width = 12, title = "Cox Model Hazard Ratios (CKD vs Non-CKD)", status = "primary", solidHeader = TRUE,
+              shiny::helpText("Hazard Ratios (HR) < 1 indicate lower risk with CKD, HR > 1 indicates higher risk."),
+              DT::DTOutput("cmResultsTable")
+            )
+          ),
+          shiny::fluidRow(
+            shinydashboard::box(
+              width = 12, title = "Attrition / Retention Post-Matching", status = "info", solidHeader = TRUE,
+              collapsible = TRUE,
+              DT::DTOutput("cmAttritionTable")
+            )
+          )
         # ---- Log ------------------------------------------------------------
         shinydashboard::tabItem(
           tabName = "log",
@@ -551,6 +577,35 @@
                                 type = "error", duration = NULL)
       })
     })
+    
+    # ---- CohortMethod -------------------------------------
+    output$cmResultsTable <- DT::renderDT({
+      resFiles <- .crnvf_find_files(resultsFolder, "cm_result\\.csv$")
+      shiny::validate(shiny::need(length(resFiles) > 0, "No cm_result.csv found in results folder."))
+      df <- .crnvf_read_csv(resFiles[1])
+      
+      tCol <- .crnvf_col(df, c("targetId"))
+      cCol <- .crnvf_col(df, c("comparatorId"))
+      oCol <- .crnvf_col(df, c("outcomeId"))
+      
+      if (!is.null(tCol)) df$Target <- .crnvf_label(df[[tCol]], cohortLookup)
+      if (!is.null(cCol)) df$Comparator <- .crnvf_label(df[[cCol]], cohortLookup)
+      if (!is.null(oCol)) df$Outcome <- .crnvf_label(df[[oCol]], cohortLookup)
+      
+      # Clean display table
+      colsToShow <- intersect(c("Target", "Comparator", "Outcome", "rr", "ci95Lb", "ci95Ub", "p", "targetSubjects", "comparatorSubjects"), names(df))
+      displayDf <- df[, colsToShow, drop = FALSE]
+      
+      DT::datatable(displayDf, rownames = FALSE, options = list(pageLength = 10, scrollX = TRUE)) |>
+        DT::formatRound(columns = intersect(c("rr", "ci95Lb", "ci95Ub", "p"), names(displayDf)), digits = 3)
+    })
+    
+    output$cmAttritionTable <- DT::renderDT({
+      attFiles <- .crnvf_find_files(resultsFolder, "cm_attrition\\.csv$")
+      shiny::validate(shiny::need(length(attFiles) > 0, "No cm_attrition.csv found."))
+      df <- .crnvf_read_csv(attFiles[1])
+      DT::datatable(df, rownames = FALSE, options = list(pageLength = 10, scrollX = TRUE))
+    })
 
     # ---- Log --------------------------------------------------------------
     output$logText <- shiny::renderText({
@@ -568,14 +623,14 @@
 #' Launch the CustomRNVF results viewer.
 #'
 #' @param resultsFolder Path to the study output folder. This may be the top
-#'   `results/` folder that holds one subfolder per `databaseId`, or a single
+#'   `outputs/` folder that holds one subfolder per `databaseId`, or a single
 #'   database folder directly. Defaults to the `CUSTOM_RNVF_RESULTS` environment
-#'   variable, or `results/` under the working directory.
+#'   variable, or `outputs/` under the working directory.
 #' @param launch.browser Whether to open a browser window. Passed to
 #'   `shiny::runApp()`.
 #' @param ... Further arguments passed to `shiny::runApp()`.
 launchResultsViewer <- function(resultsFolder = Sys.getenv("CUSTOM_RNVF_RESULTS",
-                                                           "results"),
+                                                           "outputs"),
                                 launch.browser = TRUE,
                                 ...) {
   for (pkg in c("shiny", "shinydashboard", "DT", "ggplot2", "plotly",
@@ -585,7 +640,6 @@ launchResultsViewer <- function(resultsFolder = Sys.getenv("CUSTOM_RNVF_RESULTS"
     }
   }
   if (!dir.exists(resultsFolder)) {
-    stop("Results folder does not exist: ", resultsFolder, call. = FALSE)
   }
   app <- shiny::shinyApp(ui = .crnvf_ui(),
                          server = .crnvf_server(resultsFolder))
