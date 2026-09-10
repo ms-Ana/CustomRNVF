@@ -21,7 +21,7 @@ conn <- DatabaseConnector::connect(connectionDetails)
 workDatabaseSchema <- "anastasiiaderzhanskaia"
 cdmDatabaseSchema <- "cdm_lungcancer_syth10k_251104"
 workFolder <- "work"
-resultsFolder <- "outputs"
+resultsFolder <- "results"
 executionSettings <- Strategus::createCdmExecutionSettings(
   workDatabaseSchema = workDatabaseSchema, 
   cdmDatabaseSchema = cdmDatabaseSchema,      
@@ -36,4 +36,5 @@ Strategus::execute(
   executionSettings = executionSettings,
   connectionDetails = connectionDetails
 )
+
 

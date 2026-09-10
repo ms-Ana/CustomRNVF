@@ -23,7 +23,7 @@ suppressPackageStartupMessages(library(Strategus))
 # Every id below must exist in CohortsToCreate.csv, and an id cannot be both a
 # target and an outcome. The script validates this before building anything.
 targetIds  <- c(312, 311)
-outcomeIds <- c(253, 257, 260, 261, 258)
+outcomeIds <- c(253, 260, 261, 258)
 
 outputFile <- "extras/StrategusAnalysisSpecification.json"
 # ===========================================================================
@@ -66,62 +66,143 @@ cohortGeneratorSpecs <- cohortGeneratorModule$createModuleSpecifications(
 )
 
 # --- Cohort diagnostics ----------------------------------------------------
+temporalCovariateSettings <- FeatureExtraction::createTemporalCovariateSettings(
+  useDemographicsGender               = TRUE,
+  useDemographicsAge                  = TRUE,
+  useDemographicsAgeGroup             = TRUE,
+  useDemographicsRace                 = TRUE,
+  useDemographicsEthnicity            = TRUE,
+  useDemographicsIndexYear            = TRUE,
+  useDemographicsIndexMonth           = TRUE,
+  useDemographicsIndexYearMonth       = TRUE,
+  useDemographicsPriorObservationTime = TRUE,
+  useDemographicsPostObservationTime  = TRUE,
+  useDemographicsTimeInCohort         = TRUE,
+  useConditionOccurrence              = TRUE,
+  useProcedureOccurrence              = TRUE,
+  useDrugEraStart                     = TRUE,
+  useMeasurement                      = TRUE,
+  useConditionEraStart                = TRUE,
+  useConditionEraOverlap              = TRUE,
+  useConditionEraGroupStart           = FALSE, # https://github.com/OHDSI/FeatureExtraction/issues/144
+  useConditionEraGroupOverlap         = TRUE,
+  useDrugExposure                     = FALSE, # too many concept IDs
+  useDrugEraOverlap                   = FALSE,
+  useDrugEraGroupStart                = FALSE, # https://github.com/OHDSI/FeatureExtraction/issues/144
+  useDrugEraGroupOverlap              = TRUE,
+  useObservation                      = TRUE,
+  useVisitConceptCount                = TRUE,
+  useVisitCount                       = TRUE,
+  useDeviceExposure                   = TRUE,
+  useCharlsonIndex                    = TRUE,
+  useDcsi                             = TRUE,
+  useChads2                           = TRUE,
+  useChads2Vasc                       = TRUE,
+  useHfrs                             = FALSE,
+  temporalStartDays = c(
+    -9999, # anytime prior
+    -365, # long term prior
+    -180, # medium term prior
+    -30, # short term prior
+    -365, # one year prior to -31
+    -30, # 30 days prior, not including day 0
+    0, # index date only
+    1, # 1 day after to day 30
+    31, # 31 days after to day 365
+    -9999, # any time prior to any time future
+    -30, # 30 days prior to 9999 days after
+    -30, # 30 days prior to 365 days after
+    -30, # 30 days prior to 180 days after
+    -30  # 30 days prior to 30 days after
+  ),
+  temporalEndDays = c(
+    0, # anytime prior
+    0, # long term prior
+    0, # medium term prior
+    0, # short term prior
+    -31, # one year prior to -31
+    -1, # 30 days prior, not including day 0
+    0, # index date only
+    30, # 1 day after to day 30
+    365, # 31 days after to day 365
+    9999, # any time prior to any time future
+    9999, # all after
+    365,
+    180,
+    30
+  )
+)
 cohortDiagnosticsModule <- CohortDiagnosticsModule$new()
-cohortDiagnosticsSpecs  <- cohortDiagnosticsModule$createModuleSpecifications()
+cohortDiagnosticsSpecs  <- cohortDiagnosticsModule$createModuleSpecifications(
+  cohortIds = NULL,
+  runInclusionStatistics = TRUE,
+  runIncludedSourceConcepts = TRUE,
+  runOrphanConcepts = TRUE,
+  runTimeSeries = FALSE,
+  runVisitContext = TRUE,
+  runBreakdownIndexEvents = TRUE,
+  runIncidenceRate = TRUE,
+  runCohortRelationship = TRUE,
+  runTemporalCohortCharacterization = TRUE,
+  temporalCovariateSettings = temporalCovariateSettings,
+  minCharacterizationMean = 0.01,
+  irWashoutPeriod = 0
+)
+
 
 # --- Characterization ------------------------------------------------------
 # Two time-at-risk windows, matching R/execute.R:
 #   1. on-treatment      : cohort start -> cohort end
 #   2. intent-to-treat   : cohort start -> cohort start + 365 days
-# characterizationModule <- CharacterizationModule$new()
-# characterizationSpecs  <- characterizationModule$createModuleSpecifications(
-#   targetIds        = targetIds,
-#   outcomeIds       = outcomeIds,
-#   outcomeWashoutDays = rep(365, length(outcomeIds)),  # one per outcome
-#   riskWindowStart  = c(0, 0),
-#   startAnchor     = c("cohort start", "cohort start"),
-#   riskWindowEnd   = c(0, 365),
-#   endAnchor       = c("cohort end",   "cohort start"),
-#   includeTimeToEvent            = TRUE,
-#   includeDechallengeRechallenge = TRUE,
-#   includeAggregateCovariate     = TRUE
-# )
-# 
+characterizationModule <- CharacterizationModule$new()
+characterizationSpecs  <- characterizationModule$createModuleSpecifications(
+  targetIds        = targetIds,
+  outcomeIds       = outcomeIds,
+  outcomeWashoutDays = rep(365, length(outcomeIds)),  # one per outcome
+  riskWindowStart  = c(0, 0),
+  startAnchor     = c("cohort start", "cohort start"),
+  riskWindowEnd   = c(0, 365),
+  endAnchor       = c("cohort end",   "cohort start"),
+  includeTimeToEvent            = TRUE,
+  includeDechallengeRechallenge = TRUE,
+  includeAggregateCovariate     = TRUE
+)
+
 # # --- Cohort incidence ------------------------------------------------------
-# # Same two time-at-risk windows; every target x every outcome, 365-day clean
-# # window (as in R/execute.R).
-# targetRefs <- lapply(targetIds, function(id) {
-#   CohortIncidence::createCohortRef(id = id, name = cohortName(id))
-# })
-# outcomeRefs <- lapply(seq_along(outcomeIds), function(i) {
-#   CohortIncidence::createOutcomeDef(
-#     id          = i,
-#     name        = cohortName(outcomeIds[i]),
-#     cohortId    = outcomeIds[i],
-#     cleanWindow = 365
-#   )
-# })
-# tarOnTreatment <- CohortIncidence::createTimeAtRiskDef(
-#   id = 1, startWith = "start", endWith = "end"
-# )
-# tarIntentToTreat <- CohortIncidence::createTimeAtRiskDef(
-#   id = 2, startWith = "start", endWith = "start", endOffset = 365
-# )
-# irAnalysis <- CohortIncidence::createIncidenceAnalysis(
-#   targets  = targetIds,
-#   outcomes = seq_along(outcomeIds),
-#   tars     = c(1, 2)
-# )
-# irDesign <- CohortIncidence::createIncidenceDesign(
-#   targetDefs   = targetRefs,
-#   outcomeDefs  = outcomeRefs,
-#   tars         = list(tarOnTreatment, tarIntentToTreat),
-#   analysisList = list(irAnalysis)
-# )
-# cohortIncidenceModule <- CohortIncidenceModule$new()
-# cohortIncidenceSpecs  <- cohortIncidenceModule$createModuleSpecifications(
-#   irDesign = irDesign$toList()
-# )
+# Same two time-at-risk windows; every target x every outcome, 365-day clean
+# window (as in R/execute.R).
+targetRefs <- lapply(targetIds, function(id) {
+  CohortIncidence::createCohortRef(id = id, name = cohortName(id))
+})
+outcomeRefs <- lapply(seq_along(outcomeIds), function(i) {
+  CohortIncidence::createOutcomeDef(
+    id          = i,
+    name        = cohortName(outcomeIds[i]),
+    cohortId    = outcomeIds[i],
+    cleanWindow = 365
+  )
+})
+tarOnTreatment <- CohortIncidence::createTimeAtRiskDef(
+  id = 1, startWith = "start", endWith = "end"
+)
+tarIntentToTreat <- CohortIncidence::createTimeAtRiskDef(
+  id = 2, startWith = "start", endWith = "start", endOffset = 365
+)
+irAnalysis <- CohortIncidence::createIncidenceAnalysis(
+  targets  = targetIds,
+  outcomes = seq_along(outcomeIds),
+  tars     = c(1, 2)
+)
+irDesign <- CohortIncidence::createIncidenceDesign(
+  targetDefs   = targetRefs,
+  outcomeDefs  = outcomeRefs,
+  tars         = list(tarOnTreatment, tarIntentToTreat),
+  analysisList = list(irAnalysis)
+)
+cohortIncidenceModule <- CohortIncidenceModule$new()
+cohortIncidenceSpecs  <- cohortIncidenceModule$createModuleSpecifications(
+  irDesign = irDesign$toList()
+)
 
 #--- Cohort Method ----------------------
 problematicConceptIds <- c(
@@ -135,19 +216,19 @@ covariateSettings <- FeatureExtraction::createCovariateSettings(
   useDemographicsRace = TRUE,
   useDemographicsEthnicity = TRUE,
   
-  useConditionOccurrenceLongTerm = FALSE,
-  useConditionOccurrenceShortTerm = FALSE,
-  useConditionEraLongTerm = TRUE,
-  useConditionEraShortTerm = TRUE,
-  useConditionGroupEraLongTerm = TRUE,
-  useConditionGroupEraShortTerm = TRUE,
+  useConditionOccurrenceLongTerm = TRUE,
+  useConditionOccurrenceShortTerm = TRUE,
+  useConditionEraLongTerm = FALSE,
+  useConditionEraShortTerm = FALSE,
+  useConditionGroupEraLongTerm = FALSE,
+  useConditionGroupEraShortTerm = FALSE,
   
   useDrugExposureLongTerm = FALSE,
   useDrugExposureShortTerm = FALSE,
-  useDrugEraLongTerm = TRUE,
-  useDrugEraShortTerm = TRUE,
-  useDrugGroupEraLongTerm = TRUE,
-  useDrugGroupEraShortTerm = TRUE,
+  useDrugEraLongTerm = FALSE,
+  useDrugEraShortTerm = FALSE,
+  useDrugGroupEraLongTerm = FALSE,
+  useDrugGroupEraShortTerm = FALSE,
   
   # Procedures
   useProcedureOccurrenceLongTerm = TRUE,
@@ -235,10 +316,10 @@ cohortMethodSpecs <- cohortMethodModule$createModuleSpecifications(
 analysisSpecifications <- createEmptyAnalysisSpecifications() |>
   addSharedResources(cohortSharedResource) |>
   addCohortGeneratorModuleSpecifications(cohortGeneratorSpecs) |>
-  addModuleSpecifications(cohortMethodSpecs)
-  # addCohortDiagnosticsModuleSpecifications(cohortDiagnosticsSpecs) |>
-  #addCharacterizationModuleSpecifications(characterizationSpecs) |>
-  #addCohortIncidenceModuleSpecifications(cohortIncidenceSpecs)
+  addCohortDiagnosticsModuleSpecifications(cohortDiagnosticsSpecs) |>
+  addCharacterizationModuleSpecifications(characterizationSpecs) |>
+  addCohortIncidenceModuleSpecifications(cohortIncidenceSpecs) |>
+  addModuleSpecifications(cohortMethodSpecs) 
 
 ParallelLogger::saveSettingsToJson(analysisSpecifications, outputFile)
 message("Wrote ", outputFile, " (targets: ", paste(targetIds, collapse = ", "),
