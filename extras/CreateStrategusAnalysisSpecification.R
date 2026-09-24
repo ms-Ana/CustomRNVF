@@ -23,7 +23,7 @@ suppressPackageStartupMessages(library(Strategus))
 # Every id below must exist in CohortsToCreate.csv, and an id cannot be both a
 # target and an outcome. The script validates this before building anything.
 targetIds  <- c(312, 311)
-outcomeIds <- c(253, 260, 261, 258)
+outcomeIds <- c(253, 257, 260, 261, 258)
 
 outputFile <- "extras/StrategusAnalysisSpecification.json"
 # ===========================================================================
@@ -80,56 +80,56 @@ temporalCovariateSettings <- FeatureExtraction::createTemporalCovariateSettings(
   useDemographicsTimeInCohort         = TRUE,
   useConditionOccurrence              = TRUE,
   useProcedureOccurrence              = TRUE,
-  useDrugEraStart                     = TRUE,
-  useMeasurement                      = TRUE,
+  useDrugEraStart                     = FALSE,
+  useMeasurement                      = FALSE,
   useConditionEraStart                = TRUE,
   useConditionEraOverlap              = TRUE,
   useConditionEraGroupStart           = FALSE, # https://github.com/OHDSI/FeatureExtraction/issues/144
-  useConditionEraGroupOverlap         = TRUE,
+  useConditionEraGroupOverlap         = FALSE,
   useDrugExposure                     = FALSE, # too many concept IDs
   useDrugEraOverlap                   = FALSE,
   useDrugEraGroupStart                = FALSE, # https://github.com/OHDSI/FeatureExtraction/issues/144
-  useDrugEraGroupOverlap              = TRUE,
+  useDrugEraGroupOverlap              = FALSE,
   useObservation                      = TRUE,
-  useVisitConceptCount                = TRUE,
-  useVisitCount                       = TRUE,
-  useDeviceExposure                   = TRUE,
-  useCharlsonIndex                    = TRUE,
-  useDcsi                             = TRUE,
-  useChads2                           = TRUE,
-  useChads2Vasc                       = TRUE,
+  useVisitConceptCount                = FALSE,
+  useVisitCount                       = FALSE,
+  useDeviceExposure                   = FALSE,
+  useCharlsonIndex                    = FALSE,
+  useDcsi                             = FALSE,
+  useChads2                           = FALSE,
+  useChads2Vasc                       = FALSE,
   useHfrs                             = FALSE,
   temporalStartDays = c(
     -9999, # anytime prior
-    -365, # long term prior
-    -180, # medium term prior
-    -30, # short term prior
-    -365, # one year prior to -31
-    -30, # 30 days prior, not including day 0
-    0, # index date only
-    1, # 1 day after to day 30
-    31, # 31 days after to day 365
-    -9999, # any time prior to any time future
-    -30, # 30 days prior to 9999 days after
-    -30, # 30 days prior to 365 days after
-    -30, # 30 days prior to 180 days after
-    -30  # 30 days prior to 30 days after
+    # -365, # long term prior
+    # -180, # medium term prior
+    # -30, # short term prior
+    # -365, # one year prior to -31
+    # -30, # 30 days prior, not including day 0
+    # 0, # index date only
+    # 1, # 1 day after to day 30
+    # 31, # 31 days after to day 365
+    # -9999, # any time prior to any time future
+    0 # 0 days prior to 9999 days after
+    # -30, # 30 days prior to 365 days after
+    # -30, # 30 days prior to 180 days after
+    # -30  # 30 days prior to 30 days after
   ),
   temporalEndDays = c(
     0, # anytime prior
-    0, # long term prior
-    0, # medium term prior
-    0, # short term prior
-    -31, # one year prior to -31
-    -1, # 30 days prior, not including day 0
-    0, # index date only
-    30, # 1 day after to day 30
-    365, # 31 days after to day 365
-    9999, # any time prior to any time future
-    9999, # all after
-    365,
-    180,
-    30
+    # 0, # long term prior
+    # 0, # medium term prior
+    # 0, # short term prior
+    # -31, # one year prior to -31
+    # -1, # 30 days prior, not including day 0
+    # 0, # index date only
+    # 30, # 1 day after to day 30
+    # 365, # 31 days after to day 365
+    # 9999, # any time prior to any time future
+    9999 # all after
+    # 365,
+    # 180,
+    # 30
   )
 )
 cohortDiagnosticsModule <- CohortDiagnosticsModule$new()

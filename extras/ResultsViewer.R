@@ -20,10 +20,13 @@ suppressPackageStartupMessages({
 
 .crnvf_read_csv <- function(path) {
   if (is.null(path) || !file.exists(path)) return(NULL)
-  tryCatch(
-    readr::read_csv(path, show_col_types = FALSE, progress = FALSE),
-    error = function(e) NULL
-  )
+  tryCatch({
+    df <- readr::read_csv(path, show_col_types = FALSE, progress = FALSE)
+    if (ncol(df) == 1 && grepl(";", names(df)[1])) {
+      df <- readr::read_delim(path, delim = ";", show_col_types = FALSE, progress = FALSE)
+    }
+    df
+  }, error = function(e) NULL)
 }
 
 .crnvf_norm <- function(x) gsub("[^a-z0-9]", "", tolower(x))
@@ -203,12 +206,18 @@ suppressPackageStartupMessages({
               width = 12, title = "CohortDiagnostics", status = "primary", solidHeader = TRUE,
               shiny::htmlOutput("diagStatus"),
               shiny::br(),
-              shiny::actionButton("launchDiag", "Launch DiagnosticsExplorer",
-                                  icon = shiny::icon("arrow-up-right-from-square"),
+              shiny::actionButton("launchDiag", "Load DiagnosticsExplorer Below",
+                                  icon = shiny::icon("play"),
                                   class = "btn-primary"),
               shiny::helpText(
-                "Opens OHDSI's CohortDiagnostics::launchDiagnosticsExplorer in a separate window."
+                "This will start DiagnosticsExplorer and embed it in the space below. It may take a few seconds to load."
               )
+            )
+          ),
+          # Add this new fluidRow to hold the iframe
+          shiny::fluidRow(
+            shiny::column(width = 12,
+                          shiny::uiOutput("diagIframe")
             )
           )
         ),
@@ -286,13 +295,28 @@ suppressPackageStartupMessages({
     
     # ---- Cohort counts -----------------------------------------------------
     counts <- shiny::reactive({
-      path <- .crnvf_find_file(dbFolder(), "(cg_)?cohort_count(s)?\\.csv$")
-      shiny::validate(shiny::need(!is.null(path), "Cohort counts CSV not found."))
-      df <- .crnvf_read_csv(path)
-      shiny::validate(shiny::need(!is.null(df), "Could not read cohort count CSV."))
+      # Get all possible count files (including cd_ prefix)
+      paths <- list.files(dbFolder(), pattern = "(cg_|cd_)?cohort_count(s)?\\.csv$", 
+                          full.names = TRUE, recursive = TRUE)
+      shiny::validate(shiny::need(length(paths) > 0, "Cohort counts CSV not found."))
       
-      idCol <- .crnvf_col(df, c("cohortId", "cohortDefinitionId", "cohort_id", "cohort_definition_id"))
-      shiny::validate(shiny::need(!is.null(idCol), "No cohort ID column identified."))
+      df <- NULL
+      idCol <- NULL
+      
+      # Try files until we find one with a valid cohort ID column
+      for (p in paths) {
+        temp_df <- .crnvf_read_csv(p)
+        temp_id <- .crnvf_col(temp_df, c("cohortId", "cohortDefinitionId", "cohort_id", "cohort_definition_id"))
+        if (!is.null(temp_id)) {
+          df <- temp_df
+          idCol <- temp_id
+          break
+        }
+      }
+      
+      shiny::validate(shiny::need(!is.null(df), "Could not read any cohort count CSV."))
+      shiny::validate(shiny::need(!is.null(idCol), "No cohort ID column identified in any found files."))
+      
       df$.label <- .crnvf_label(df[[idCol]], cohortLookup)
       df
     })
@@ -328,12 +352,30 @@ suppressPackageStartupMessages({
     
     # ---- Incidence ---------------------------------------------------------
     incidence <- shiny::reactive({
-      path <- .crnvf_find_file(dbFolder(), "(ci_incidence_summary|incidence_summary|incidence_rate)\\.csv$")
+      path <- .crnvf_find_file(dbFolder(), "ci_incidence_summary\\.csv$")
       shiny::validate(shiny::need(!is.null(path), "Incidence summary CSV not found."))
       df <- .crnvf_read_csv(path)
       shiny::validate(shiny::need(!is.null(df), "Could not read incidence summary CSV."))
+      
+      tCol <- .crnvf_col(df, c("targetCohortDefinitionId", "targetId", "targetCohortId", "target_id", "target_cohort_definition_id"))
+      refIdSummary <- .crnvf_col(df, c("ref_id", "refId"))
+      
+      if (is.null(tCol) && !is.null(refIdSummary)) {
+        refPath <- .crnvf_find_file(dbFolder(), "(ci_target_outcome_ref|target_outcome_ref)\\.csv$")
+        if (!is.null(refPath)) {
+          refDf <- .crnvf_read_csv(refPath)
+          if (!is.null(refDf)) {
+            refIdRef <- .crnvf_col(refDf, c("ref_id", "refId"))
+            if (!is.null(refIdRef)) {
+              df <- dplyr::left_join(df, refDf, by = stats::setNames(refIdRef, refIdSummary))
+            }
+          }
+        }
+      }
+      
       df
     })
+    
     
     output$irTargetPicker <- shiny::renderUI({
       df <- incidence()
@@ -540,13 +582,30 @@ suppressPackageStartupMessages({
             dataFolder = f, sqliteDbPath = sqlitePath, overwrite = FALSE
           )
         }
-        shiny::showNotification("Launching DiagnosticsExplorer...", type = "message")
-        CohortDiagnostics::launchDiagnosticsExplorer(sqliteDbPath = sqlitePath)
+        shiny::showNotification("Starting DiagnosticsExplorer...", type = "message")
+        
+        # 1. Launch in background on a fixed port (e.g., 8123) and disable auto-launching the browser
+        r_code <- sprintf("CohortDiagnostics::launchDiagnosticsExplorer(sqliteDbPath = '%s', port = 8123, launch.browser = FALSE)", sqlitePath)
+        system2("Rscript", args = c("-e", shQuote(r_code)), wait = FALSE)
+        
+        # 2. Render the iframe pointing to that local port
+        output$diagIframe <- shiny::renderUI({
+          # Sleep briefly to give the background process time to start before the iframe requests it
+          Sys.sleep(3) 
+          shiny::tags$iframe(
+            src = "http://127.0.0.1:8123",
+            width = "100%",
+            height = "900px",
+            style = "border: none; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);"
+          )
+        })
+        
       }, error = function(e) {
         shiny::showNotification(paste("DiagnosticsExplorer error:", conditionMessage(e)),
                                 type = "error", duration = NULL)
       })
     })
+    
     
     # ---- CohortMethod ------------------------------------------------------
     kmData <- shiny::reactive({
