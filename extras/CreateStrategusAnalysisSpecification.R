@@ -25,7 +25,7 @@ suppressPackageStartupMessages(library(Strategus))
 targetIds  <- c(312, 311)
 outcomeIds <- c(253, 260, 261, 258)
 
-outputFile <- "extras/StrategusAnalysisSpecification.json"
+outputFile <- "extras/StrategusAnalysisSpecification_lite.json"
 # ===========================================================================
 
 # --- Cohorts (read straight from the package's inst/ folder) ---------------
@@ -79,13 +79,13 @@ temporalCovariateSettings <- FeatureExtraction::createTemporalCovariateSettings(
   useDemographicsPostObservationTime  = TRUE,
   useDemographicsTimeInCohort         = TRUE,
   useConditionOccurrence              = TRUE,
-  useProcedureOccurrence              = TRUE,
+  useProcedureOccurrence              = FALSE,
   useDrugEraStart                     = TRUE,
-  useMeasurement                      = TRUE,
+  useMeasurement                      = FALSE,
   useConditionEraStart                = TRUE,
-  useConditionEraOverlap              = TRUE,
+  useConditionEraOverlap              = FALSE,
   useConditionEraGroupStart           = FALSE, # https://github.com/OHDSI/FeatureExtraction/issues/144
-  useConditionEraGroupOverlap         = TRUE,
+  useConditionEraGroupOverlap         = FALSE,
   useDrugExposure                     = FALSE, # too many concept IDs
   useDrugEraOverlap                   = FALSE,
   useDrugEraGroupStart                = FALSE, # https://github.com/OHDSI/FeatureExtraction/issues/144
@@ -101,35 +101,11 @@ temporalCovariateSettings <- FeatureExtraction::createTemporalCovariateSettings(
   useHfrs                             = FALSE,
   temporalStartDays = c(
     -9999, # anytime prior
-    -365, # long term prior
-    -180, # medium term prior
-    -30, # short term prior
-    -365, # one year prior to -31
-    -30, # 30 days prior, not including day 0
-    0, # index date only
-    1, # 1 day after to day 30
-    31, # 31 days after to day 365
-    -9999, # any time prior to any time future
-    -30, # 30 days prior to 9999 days after
-    -30, # 30 days prior to 365 days after
-    -30, # 30 days prior to 180 days after
-    -30  # 30 days prior to 30 days after
+    0 # all after
   ),
   temporalEndDays = c(
     0, # anytime prior
-    0, # long term prior
-    0, # medium term prior
-    0, # short term prior
-    -31, # one year prior to -31
-    -1, # 30 days prior, not including day 0
-    0, # index date only
-    30, # 1 day after to day 30
-    365, # 31 days after to day 365
-    9999, # any time prior to any time future
-    9999, # all after
-    365,
-    180,
-    30
+    9999 # all after
   )
 )
 cohortDiagnosticsModule <- CohortDiagnosticsModule$new()
@@ -137,12 +113,12 @@ cohortDiagnosticsSpecs  <- cohortDiagnosticsModule$createModuleSpecifications(
   cohortIds = NULL,
   runInclusionStatistics = TRUE,
   runIncludedSourceConcepts = TRUE,
-  runOrphanConcepts = TRUE,
+  runOrphanConcepts = FALSE,
   runTimeSeries = FALSE,
   runVisitContext = TRUE,
   runBreakdownIndexEvents = TRUE,
-  runIncidenceRate = TRUE,
-  runCohortRelationship = TRUE,
+  runIncidenceRate = FALSE,
+  runCohortRelationship = FALSE,
   runTemporalCohortCharacterization = TRUE,
   temporalCovariateSettings = temporalCovariateSettings,
   minCharacterizationMean = 0.01,
@@ -287,7 +263,10 @@ cmAnalysis <- CohortMethod::createCmAnalysis(
   createStudyPopArgs = createStudyPopArgs,
   createPsArgs = createPsArgs,
   matchOnPsArgs = matchOnPsArgs,
-  fitOutcomeModelArgs = fitOutcomeModelArgs
+  fitOutcomeModelArgs = fitOutcomeModelArgs,
+  computeSharedCovariateBalanceArgs = CohortMethod::createComputeCovariateBalanceArgs(),
+  computeCovariateBalanceArgs = CohortMethod::createComputeCovariateBalanceArgs(
+    covariateFilter = CohortMethod::getDefaultCmTable1Specifications())
 )
 
 outcomes <- lapply(outcomeIds, function(outcomeId) {
