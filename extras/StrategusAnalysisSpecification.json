@@ -78,21 +78,10 @@
           "ConditionOccurrence": true,
           "ConditionEraStart": true,
           "ConditionEraOverlap": true,
-          "ConditionEraGroupOverlap": true,
-          "DrugEraStart": true,
-          "DrugEraGroupOverlap": true,
           "ProcedureOccurrence": true,
-          "DeviceExposure": true,
-          "Measurement": true,
           "Observation": true,
-          "CharlsonIndex": true,
-          "Dcsi": true,
-          "Chads2": true,
-          "Chads2Vasc": true,
-          "VisitCount": true,
-          "VisitConceptCount": true,
-          "temporalStartDays": [-9999, -365, -180, -30, -365, -30, 0, 1, 31, -9999, -30, -30, -30, -30],
-          "temporalEndDays": [0, 0, 0, 0, -31, -1, 0, 30, 365, 9999, 9999, 365, 180, 30],
+          "temporalStartDays": [-9999, 0],
+          "temporalEndDays": [0, 9999],
           "includedCovariateConceptIds": [],
           "addDescendantsToInclude": false,
           "excludedCovariateConceptIds": [],
@@ -113,14 +102,14 @@
           "timeToEventSettings": [
             {
               "targetIds": [312, 311],
-              "outcomeIds": [253, 260, 261, 258],
+              "outcomeIds": [253, 257, 260, 261, 258],
               "attr_class": "timeToEventSettings"
             }
           ],
           "dechallengeRechallengeSettings": [
             {
               "targetCohortDefinitionIds": [312, 311],
-              "outcomeCohortDefinitionIds": [253, 260, 261, 258],
+              "outcomeCohortDefinitionIds": [253, 257, 260, 261, 258],
               "dechallengeStopInterval": 30,
               "dechallengeEvaluationWindow": 30,
               "attr_class": "dechallengeRechallengeSettings"
@@ -130,7 +119,7 @@
             {
               "targetIds": [312, 311],
               "minPriorObservation": 365,
-              "outcomeIds": [253, 260, 261, 258],
+              "outcomeIds": [253, 257, 260, 261, 258],
               "outcomeWashoutDays": 365,
               "riskWindowStart": 0,
               "startAnchor": "cohort start",
@@ -204,7 +193,7 @@
             {
               "targetIds": [312, 311],
               "minPriorObservation": 365,
-              "outcomeIds": [253, 260, 261, 258],
+              "outcomeIds": [253, 257, 260, 261, 258],
               "outcomeWashoutDays": 365,
               "riskWindowStart": 0,
               "startAnchor": "cohort start",
@@ -305,18 +294,24 @@
             },
             {
               "id": 2,
+              "name": "LCa_RQ2-outcome (SAE_hospit or ER)",
+              "cohortId": 257,
+              "cleanWindow": 365
+            },
+            {
+              "id": 3,
               "name": "LCa_RQ2-outcome (SAE_sepsis)",
               "cohortId": 260,
               "cleanWindow": 365
             },
             {
-              "id": 3,
+              "id": 4,
               "name": "LCa_RQ2-outcome (SAE_VTE)",
               "cohortId": 261,
               "cleanWindow": 365
             },
             {
-              "id": 4,
+              "id": 5,
               "name": "LCa_RQ2-outcome (SAE_resp infections)",
               "cohortId": 258,
               "cleanWindow": 365
@@ -349,7 +344,7 @@
           "analysisList": [
             {
               "targets": [312, 311],
-              "outcomes": [1, 2, 3, 4],
+              "outcomes": [1, 2, 3, 4, 5],
               "tars": [1, 2]
             }
           ]
@@ -517,6 +512,12 @@
             "outcomes": [
               {
                 "outcomeId": 253,
+                "outcomeOfInterest": true,
+                "trueEffectSize": null,
+                "attr_class": "outcome"
+              },
+              {
+                "outcomeId": 257,
                 "outcomeOfInterest": true,
                 "trueEffectSize": null,
                 "attr_class": "outcome"
