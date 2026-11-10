@@ -1,0 +1,581 @@
+{
+  "sharedResources": [
+    {
+      "cohortDefinitions": [
+        {
+          "cohortId": 312,
+          "cohortName": "Patient 2_LCa_with CKD",
+          "cohortDefinition": "{\n\t\"cdmVersionRange\" : \">=5.0.0\",\n\t\"PrimaryCriteria\" : {\n\t\t\"CriteriaList\" : [\n\t\t\t{\n\t\t\t\t\"DrugExposure\" : {\n\t\t\t\t\t\"CodesetId\" : 17,\n\t\t\t\t\t\"First\" : true,\n\t\t\t\t\t\"DrugTypeExclude\" : false\n\t\t\t\t}\n\t\t\t}\n\t\t],\n\t\t\"ObservationWindow\" : {\n\t\t\t\"PriorDays\" : 365,\n\t\t\t\"PostDays\" : 365\n\t\t},\n\t\t\"PrimaryCriteriaLimit\" : {\n\t\t\t\"Type\" : \"First\"\n\t\t}\n\t},\n\t\"ConceptSets\" : [\n\t\t{\n\t\t\t\"id\" : 4,\n\t\t\t\"name\" : \"Non-small cell carcinoma of lung, TNM stage 1\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"items\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4310703,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Non-small cell carcinoma of lung, TNM stage 1\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"424132000\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"id\" : 5,\n\t\t\t\"name\" : \"BMI\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"items\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 3038553,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Body mass index (BMI) [Ratio]\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"39156-5\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Measurement\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"LOINC\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Observation\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"id\" : 6,\n\t\t\t\"name\" : \"Type 2 Diabetes\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"items\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 201826,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Type 2 diabetes mellitus\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"44054006\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"id\" : 9,\n\t\t\t\"name\" : \"Cardiovascular disieases\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"items\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 316139,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Heart failure\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"84114007\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 313217,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Atrial fibrillation\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"49436004\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4185932,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Ischemic heart disease\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"414545008\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 316866,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Hypertensive disorder\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"38341003\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 320128,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Essential hypertension\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"59621000\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"id\" : 10,\n\t\t\t\"name\" : \"Chronic Obstructive Pulmonary Disease (COPD)\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"items\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 255573,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Chronic obstructive lung disease\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"13645005\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 258780,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Emphysematous bronchitis\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"185086009\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"id\" : 11,\n\t\t\t\"name\" : \"Type 2 Diabetes_ Complications\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"items\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 442793,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Complication due to diabetes mellitus\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"74627003\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"id\" : 12,\n\t\t\t\"name\" : \"Chronic kidney disease (CKD)\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"items\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 46271022,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Chronic kidney disease\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"709044004\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"id\" : 13,\n\t\t\t\"name\" : \"Other tumors\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"items\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4112853,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Malignant tumor of breast\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"254837009\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4180790,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Malignant tumor of colon\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"363406005\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4114222,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Malignant tumor of head and neck\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"255056009\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4095312,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Malignant tumor of nasopharynx\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"187692001\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 78097,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Secondary malignant neoplasm of bone\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"94222008\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4311765,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Secondary malignant neoplasm of colon\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"94260004\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 318096,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Secondary malignant neoplasm of lymph node\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"94392001\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 432851,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Secondary malignant neoplastic disease\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"128462008\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 200970,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Carcinoma in situ of prostate\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"92691004\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4244639,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Carcinoma in situ of pharynx\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"92681005\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 24897,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Carcinoma in situ of larynx\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"92634009\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"id\" : 14,\n\t\t\t\"name\" : \"Smoking\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"items\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 903654,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Tobacco or its derivatives user\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"OMOP5181835\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Observation\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"OMOP Extension\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 43054909,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Tobacco smoking status\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"72166-2\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Observation\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"LOINC\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Observation\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"id\" : 15,\n\t\t\t\"name\" : \"Metabolic syndrome X\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"items\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 436940,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Metabolic syndrome X\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"237602007\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"id\" : 16,\n\t\t\t\"name\" : \"Anemia\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"items\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 439777,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Anemia\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"271737000\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"id\" : 17,\n\t\t\t\"name\" : \"[OPTIMA LRQ 16] Cisplatin\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"items\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 1397599,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"cisplatin\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"2555\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Drug\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"RxNorm\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Ingredient\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : true\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t}\n\t],\n\t\"QualifiedLimit\" : {\n\t\t\"Type\" : \"First\"\n\t},\n\t\"ExpressionLimit\" : {\n\t\t\"Type\" : \"First\"\n\t},\n\t\"InclusionRules\" : [\n\t\t{\n\t\t\t\"name\" : \"Male\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"Type\" : \"ALL\",\n\t\t\t\t\"CriteriaList\" : [],\n\t\t\t\t\"DemographicCriteriaList\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"Gender\" : [\n\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\t\"CONCEPT_ID\" : 8507,\n\t\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"MALE\",\n\t\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : null,\n\t\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Unknown\",\n\t\t\t\t\t\t\t\t\"INVALID_REASON\" : null,\n\t\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Unknown\",\n\t\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"M\",\n\t\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Gender\",\n\t\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"Gender\",\n\t\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : null\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t]\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"Groups\" : []\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"name\" : \"Age\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"Type\" : \"ALL\",\n\t\t\t\t\"CriteriaList\" : [],\n\t\t\t\t\"DemographicCriteriaList\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"Age\" : {\n\t\t\t\t\t\t\t\"Value\" : 50,\n\t\t\t\t\t\t\t\"Op\" : \"gt\"\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"Groups\" : []\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"name\" : \"NSCLC TNM1\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"Type\" : \"ALL\",\n\t\t\t\t\"CriteriaList\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"Criteria\" : {\n\t\t\t\t\t\t\t\"ConditionOccurrence\" : {\n\t\t\t\t\t\t\t\t\"CodesetId\" : 4\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"StartWindow\" : {\n\t\t\t\t\t\t\t\"Start\" : {\n\t\t\t\t\t\t\t\t\"Coeff\" : -1\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\"End\" : {\n\t\t\t\t\t\t\t\t\"Days\" : 30,\n\t\t\t\t\t\t\t\t\"Coeff\" : 1\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\"UseIndexEnd\" : false,\n\t\t\t\t\t\t\t\"UseEventEnd\" : false\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"RestrictVisit\" : false,\n\t\t\t\t\t\t\"IgnoreObservationPeriod\" : false,\n\t\t\t\t\t\t\"Occurrence\" : {\n\t\t\t\t\t\t\t\"Type\" : 2,\n\t\t\t\t\t\t\t\"Count\" : 1,\n\t\t\t\t\t\t\t\"IsDistinct\" : false\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"DemographicCriteriaList\" : [],\n\t\t\t\t\"Groups\" : []\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"name\" : \"No other tumors\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"Type\" : \"AT_MOST\",\n\t\t\t\t\"Count\" : 0,\n\t\t\t\t\"CriteriaList\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"Criteria\" : {\n\t\t\t\t\t\t\t\"ConditionOccurrence\" : {\n\t\t\t\t\t\t\t\t\"CodesetId\" : 13\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"StartWindow\" : {\n\t\t\t\t\t\t\t\"Start\" : {\n\t\t\t\t\t\t\t\t\"Coeff\" : -1\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\"End\" : {\n\t\t\t\t\t\t\t\t\"Days\" : 365,\n\t\t\t\t\t\t\t\t\"Coeff\" : 1\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\"UseIndexEnd\" : false,\n\t\t\t\t\t\t\t\"UseEventEnd\" : false\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"RestrictVisit\" : false,\n\t\t\t\t\t\t\"IgnoreObservationPeriod\" : false,\n\t\t\t\t\t\t\"Occurrence\" : {\n\t\t\t\t\t\t\t\"Type\" : 2,\n\t\t\t\t\t\t\t\"Count\" : 1,\n\t\t\t\t\t\t\t\"IsDistinct\" : false\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"DemographicCriteriaList\" : [],\n\t\t\t\t\"Groups\" : []\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"name\" : \"CKD\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"Type\" : \"ALL\",\n\t\t\t\t\"CriteriaList\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"Criteria\" : {\n\t\t\t\t\t\t\t\"ConditionOccurrence\" : {\n\t\t\t\t\t\t\t\t\"CodesetId\" : 12\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"StartWindow\" : {\n\t\t\t\t\t\t\t\"Start\" : {\n\t\t\t\t\t\t\t\t\"Coeff\" : -1\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\"End\" : {\n\t\t\t\t\t\t\t\t\"Days\" : 365,\n\t\t\t\t\t\t\t\t\"Coeff\" : 1\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\"UseIndexEnd\" : false,\n\t\t\t\t\t\t\t\"UseEventEnd\" : false\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"RestrictVisit\" : false,\n\t\t\t\t\t\t\"IgnoreObservationPeriod\" : false,\n\t\t\t\t\t\t\"Occurrence\" : {\n\t\t\t\t\t\t\t\"Type\" : 2,\n\t\t\t\t\t\t\t\"Count\" : 1,\n\t\t\t\t\t\t\t\"IsDistinct\" : false\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"DemographicCriteriaList\" : [],\n\t\t\t\t\"Groups\" : []\n\t\t\t}\n\t\t}\n\t],\n\t\"CensoringCriteria\" : [],\n\t\"CollapseSettings\" : {\n\t\t\"CollapseType\" : \"ERA\",\n\t\t\"EraPad\" : 0\n\t},\n\t\"CensorWindow\" : {}\n}"
+        },
+        {
+          "cohortId": 311,
+          "cohortName": "Patient 2_LCa_without CKD",
+          "cohortDefinition": "{\n\t\"cdmVersionRange\" : \">=5.0.0\",\n\t\"PrimaryCriteria\" : {\n\t\t\"CriteriaList\" : [\n\t\t\t{\n\t\t\t\t\"DrugExposure\" : {\n\t\t\t\t\t\"CodesetId\" : 17,\n\t\t\t\t\t\"First\" : true,\n\t\t\t\t\t\"DrugTypeExclude\" : false\n\t\t\t\t}\n\t\t\t}\n\t\t],\n\t\t\"ObservationWindow\" : {\n\t\t\t\"PriorDays\" : 365,\n\t\t\t\"PostDays\" : 365\n\t\t},\n\t\t\"PrimaryCriteriaLimit\" : {\n\t\t\t\"Type\" : \"First\"\n\t\t}\n\t},\n\t\"ConceptSets\" : [\n\t\t{\n\t\t\t\"id\" : 4,\n\t\t\t\"name\" : \"Non-small cell carcinoma of lung, TNM stage 1\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"items\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4310703,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Non-small cell carcinoma of lung, TNM stage 1\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"424132000\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"id\" : 5,\n\t\t\t\"name\" : \"BMI\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"items\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 3038553,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Body mass index (BMI) [Ratio]\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"39156-5\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Measurement\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"LOINC\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Observation\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"id\" : 6,\n\t\t\t\"name\" : \"Type 2 Diabetes\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"items\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 201826,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Type 2 diabetes mellitus\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"44054006\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"id\" : 9,\n\t\t\t\"name\" : \"Cardiovascular disieases\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"items\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 316139,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Heart failure\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"84114007\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 313217,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Atrial fibrillation\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"49436004\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4185932,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Ischemic heart disease\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"414545008\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 316866,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Hypertensive disorder\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"38341003\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 320128,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Essential hypertension\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"59621000\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"id\" : 10,\n\t\t\t\"name\" : \"Chronic Obstructive Pulmonary Disease (COPD)\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"items\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 255573,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Chronic obstructive lung disease\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"13645005\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 258780,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Emphysematous bronchitis\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"185086009\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"id\" : 11,\n\t\t\t\"name\" : \"Type 2 Diabetes_ Complications\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"items\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 442793,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Complication due to diabetes mellitus\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"74627003\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"id\" : 12,\n\t\t\t\"name\" : \"Chronic kidney disease (CKD)\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"items\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 46271022,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Chronic kidney disease\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"709044004\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"id\" : 13,\n\t\t\t\"name\" : \"Other tumors\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"items\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4112853,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Malignant tumor of breast\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"254837009\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4180790,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Malignant tumor of colon\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"363406005\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4114222,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Malignant tumor of head and neck\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"255056009\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4095312,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Malignant tumor of nasopharynx\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"187692001\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 78097,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Secondary malignant neoplasm of bone\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"94222008\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4311765,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Secondary malignant neoplasm of colon\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"94260004\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 318096,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Secondary malignant neoplasm of lymph node\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"94392001\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 432851,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Secondary malignant neoplastic disease\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"128462008\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 200970,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Carcinoma in situ of prostate\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"92691004\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4244639,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Carcinoma in situ of pharynx\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"92681005\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 24897,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Carcinoma in situ of larynx\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"92634009\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"id\" : 14,\n\t\t\t\"name\" : \"Smoking\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"items\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 903654,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Tobacco or its derivatives user\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"OMOP5181835\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Observation\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"OMOP Extension\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 43054909,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Tobacco smoking status\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"72166-2\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Observation\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"LOINC\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Observation\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"id\" : 15,\n\t\t\t\"name\" : \"Metabolic syndrome X\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"items\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 436940,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Metabolic syndrome X\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"237602007\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"id\" : 16,\n\t\t\t\"name\" : \"Anemia\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"items\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 439777,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Anemia\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"271737000\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"id\" : 17,\n\t\t\t\"name\" : \"[OPTIMA LRQ 16] Cisplatin\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"items\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 1397599,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"cisplatin\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"2555\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Drug\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"RxNorm\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Ingredient\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : true\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t}\n\t],\n\t\"QualifiedLimit\" : {\n\t\t\"Type\" : \"First\"\n\t},\n\t\"ExpressionLimit\" : {\n\t\t\"Type\" : \"First\"\n\t},\n\t\"InclusionRules\" : [\n\t\t{\n\t\t\t\"name\" : \"Male\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"Type\" : \"ALL\",\n\t\t\t\t\"CriteriaList\" : [],\n\t\t\t\t\"DemographicCriteriaList\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"Gender\" : [\n\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\t\"CONCEPT_ID\" : 8507,\n\t\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"MALE\",\n\t\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : null,\n\t\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Unknown\",\n\t\t\t\t\t\t\t\t\"INVALID_REASON\" : null,\n\t\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Unknown\",\n\t\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"M\",\n\t\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Gender\",\n\t\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"Gender\",\n\t\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : null\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t]\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"Groups\" : []\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"name\" : \"Age\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"Type\" : \"ALL\",\n\t\t\t\t\"CriteriaList\" : [],\n\t\t\t\t\"DemographicCriteriaList\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"Age\" : {\n\t\t\t\t\t\t\t\"Value\" : 50,\n\t\t\t\t\t\t\t\"Op\" : \"gt\"\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"Groups\" : []\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"name\" : \"NSCLC TNM1\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"Type\" : \"ALL\",\n\t\t\t\t\"CriteriaList\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"Criteria\" : {\n\t\t\t\t\t\t\t\"ConditionOccurrence\" : {\n\t\t\t\t\t\t\t\t\"CodesetId\" : 4\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"StartWindow\" : {\n\t\t\t\t\t\t\t\"Start\" : {\n\t\t\t\t\t\t\t\t\"Coeff\" : -1\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\"End\" : {\n\t\t\t\t\t\t\t\t\"Days\" : 30,\n\t\t\t\t\t\t\t\t\"Coeff\" : 1\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\"UseIndexEnd\" : false,\n\t\t\t\t\t\t\t\"UseEventEnd\" : false\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"RestrictVisit\" : false,\n\t\t\t\t\t\t\"IgnoreObservationPeriod\" : false,\n\t\t\t\t\t\t\"Occurrence\" : {\n\t\t\t\t\t\t\t\"Type\" : 2,\n\t\t\t\t\t\t\t\"Count\" : 1,\n\t\t\t\t\t\t\t\"IsDistinct\" : false\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"DemographicCriteriaList\" : [],\n\t\t\t\t\"Groups\" : []\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"name\" : \"No other tumors\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"Type\" : \"AT_MOST\",\n\t\t\t\t\"Count\" : 0,\n\t\t\t\t\"CriteriaList\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"Criteria\" : {\n\t\t\t\t\t\t\t\"ConditionOccurrence\" : {\n\t\t\t\t\t\t\t\t\"CodesetId\" : 13\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"StartWindow\" : {\n\t\t\t\t\t\t\t\"Start\" : {\n\t\t\t\t\t\t\t\t\"Coeff\" : -1\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\"End\" : {\n\t\t\t\t\t\t\t\t\"Days\" : 365,\n\t\t\t\t\t\t\t\t\"Coeff\" : 1\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\"UseIndexEnd\" : false,\n\t\t\t\t\t\t\t\"UseEventEnd\" : false\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"RestrictVisit\" : false,\n\t\t\t\t\t\t\"IgnoreObservationPeriod\" : false,\n\t\t\t\t\t\t\"Occurrence\" : {\n\t\t\t\t\t\t\t\"Type\" : 2,\n\t\t\t\t\t\t\t\"Count\" : 1,\n\t\t\t\t\t\t\t\"IsDistinct\" : false\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"DemographicCriteriaList\" : [],\n\t\t\t\t\"Groups\" : []\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"name\" : \"No CKD\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"Type\" : \"ALL\",\n\t\t\t\t\"CriteriaList\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"Criteria\" : {\n\t\t\t\t\t\t\t\"ConditionOccurrence\" : {\n\t\t\t\t\t\t\t\t\"CodesetId\" : 12\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"StartWindow\" : {\n\t\t\t\t\t\t\t\"Start\" : {\n\t\t\t\t\t\t\t\t\"Coeff\" : -1\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\"End\" : {\n\t\t\t\t\t\t\t\t\"Days\" : 365,\n\t\t\t\t\t\t\t\t\"Coeff\" : 1\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\"UseIndexEnd\" : false,\n\t\t\t\t\t\t\t\"UseEventEnd\" : false\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"RestrictVisit\" : false,\n\t\t\t\t\t\t\"IgnoreObservationPeriod\" : false,\n\t\t\t\t\t\t\"Occurrence\" : {\n\t\t\t\t\t\t\t\"Type\" : 0,\n\t\t\t\t\t\t\t\"Count\" : 0,\n\t\t\t\t\t\t\t\"IsDistinct\" : false\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"DemographicCriteriaList\" : [],\n\t\t\t\t\"Groups\" : []\n\t\t\t}\n\t\t}\n\t],\n\t\"CensoringCriteria\" : [],\n\t\"CollapseSettings\" : {\n\t\t\"CollapseType\" : \"ERA\",\n\t\t\"EraPad\" : 0\n\t},\n\t\"CensorWindow\" : {}\n}"
+        },
+        {
+          "cohortId": 253,
+          "cohortName": "LCa_RQ2-outcome (death)",
+          "cohortDefinition": "{\n\t\"cdmVersionRange\" : \">=5.0.0\",\n\t\"PrimaryCriteria\" : {\n\t\t\"CriteriaList\" : [\n\t\t\t{\n\t\t\t\t\"Death\" : {\n\t\t\t\t\t\"DeathTypeExclude\" : false\n\t\t\t\t}\n\t\t\t}\n\t\t],\n\t\t\"ObservationWindow\" : {\n\t\t\t\"PriorDays\" : 0,\n\t\t\t\"PostDays\" : 0\n\t\t},\n\t\t\"PrimaryCriteriaLimit\" : {\n\t\t\t\"Type\" : \"First\"\n\t\t}\n\t},\n\t\"ConceptSets\" : [\n\t\t{\n\t\t\t\"id\" : 0,\n\t\t\t\"name\" : \"[Demo for Shiny] NSCLC\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"items\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4115276,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Non-small cell lung cancer\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"254637007\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t}\n\t],\n\t\"QualifiedLimit\" : {\n\t\t\"Type\" : \"First\"\n\t},\n\t\"ExpressionLimit\" : {\n\t\t\"Type\" : \"First\"\n\t},\n\t\"InclusionRules\" : [\n\t\t{\n\t\t\t\"name\" : \"Adult\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"Type\" : \"ALL\",\n\t\t\t\t\"CriteriaList\" : [],\n\t\t\t\t\"DemographicCriteriaList\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"Age\" : {\n\t\t\t\t\t\t\t\"Value\" : 18,\n\t\t\t\t\t\t\t\"Op\" : \"gt\"\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"Groups\" : []\n\t\t\t}\n\t\t}\n\t],\n\t\"CensoringCriteria\" : [],\n\t\"CollapseSettings\" : {\n\t\t\"CollapseType\" : \"ERA\",\n\t\t\"EraPad\" : 0\n\t},\n\t\"CensorWindow\" : {}\n}"
+        },
+        {
+          "cohortId": 257,
+          "cohortName": "LCa_RQ2-outcome (SAE_hospit or ER)",
+          "cohortDefinition": "{\n\t\"cdmVersionRange\" : \">=5.0.0\",\n\t\"PrimaryCriteria\" : {\n\t\t\"CriteriaList\" : [\n\t\t\t{\n\t\t\t\t\"VisitOccurrence\" : {\n\t\t\t\t\t\"CodesetId\" : 0,\n\t\t\t\t\t\"VisitTypeExclude\" : false\n\t\t\t\t}\n\t\t\t}\n\t\t],\n\t\t\"ObservationWindow\" : {\n\t\t\t\"PriorDays\" : 0,\n\t\t\t\"PostDays\" : 0\n\t\t},\n\t\t\"PrimaryCriteriaLimit\" : {\n\t\t\t\"Type\" : \"All\"\n\t\t}\n\t},\n\t\"ConceptSets\" : [\n\t\t{\n\t\t\t\"id\" : 0,\n\t\t\t\"name\" : \"All hospitalization/ER\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"items\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 262,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Emergency Room and Inpatient Visit\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"ERIP\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Visit\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"Visit\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Visit\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 9201,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Inpatient Visit\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"IP\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Visit\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"Visit\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Visit\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 9203,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Emergency Room Visit\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"ER\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Visit\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"Visit\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Visit\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 8870,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Emergency Room - Hospital\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"23\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Visit\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"CMS Place of Service\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Visit\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 581381,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Emergency Room Critical Care Facility\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"OMOP4822040\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Visit\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"CMS Place of Service\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Visit\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"id\" : 1,\n\t\t\t\"name\" : \"[Demo for Shiny] NSCLC\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"items\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4115276,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Non-small cell lung cancer\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"254637007\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t}\n\t],\n\t\"QualifiedLimit\" : {\n\t\t\"Type\" : \"First\"\n\t},\n\t\"ExpressionLimit\" : {\n\t\t\"Type\" : \"All\"\n\t},\n\t\"InclusionRules\" : [\n\t\t{\n\t\t\t\"name\" : \"Adult\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"Type\" : \"ALL\",\n\t\t\t\t\"CriteriaList\" : [],\n\t\t\t\t\"DemographicCriteriaList\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"Age\" : {\n\t\t\t\t\t\t\t\"Value\" : 18,\n\t\t\t\t\t\t\t\"Op\" : \"gt\"\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"Groups\" : []\n\t\t\t}\n\t\t}\n\t],\n\t\"EndStrategy\" : {\n\t\t\"DateOffset\" : {\n\t\t\t\"DateField\" : \"StartDate\",\n\t\t\t\"Offset\" : 1\n\t\t}\n\t},\n\t\"CensoringCriteria\" : [],\n\t\"CollapseSettings\" : {\n\t\t\"CollapseType\" : \"ERA\",\n\t\t\"EraPad\" : 0\n\t},\n\t\"CensorWindow\" : {}\n}"
+        },
+        {
+          "cohortId": 260,
+          "cohortName": "LCa_RQ2-outcome (SAE_sepsis)",
+          "cohortDefinition": "{\n\t\"cdmVersionRange\" : \">=5.0.0\",\n\t\"PrimaryCriteria\" : {\n\t\t\"CriteriaList\" : [\n\t\t\t{\n\t\t\t\t\"ConditionOccurrence\" : {\n\t\t\t\t\t\"CodesetId\" : 4\n\t\t\t\t}\n\t\t\t}\n\t\t],\n\t\t\"ObservationWindow\" : {\n\t\t\t\"PriorDays\" : 0,\n\t\t\t\"PostDays\" : 0\n\t\t},\n\t\t\"PrimaryCriteriaLimit\" : {\n\t\t\t\"Type\" : \"All\"\n\t\t}\n\t},\n\t\"ConceptSets\" : [\n\t\t{\n\t\t\t\"id\" : 4,\n\t\t\t\"name\" : \"Sepsis\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"items\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 40487101,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Clinical sepsis\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"447931005\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 132797,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Sepsis\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"91302008\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"id\" : 5,\n\t\t\t\"name\" : \"[Demo for Shiny] NSCLC\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"items\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4115276,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Non-small cell lung cancer\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"254637007\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t}\n\t],\n\t\"QualifiedLimit\" : {\n\t\t\"Type\" : \"First\"\n\t},\n\t\"ExpressionLimit\" : {\n\t\t\"Type\" : \"All\"\n\t},\n\t\"InclusionRules\" : [\n\t\t{\n\t\t\t\"name\" : \"Adult\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"Type\" : \"ALL\",\n\t\t\t\t\"CriteriaList\" : [],\n\t\t\t\t\"DemographicCriteriaList\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"Age\" : {\n\t\t\t\t\t\t\t\"Value\" : 18,\n\t\t\t\t\t\t\t\"Op\" : \"gt\"\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"Groups\" : []\n\t\t\t}\n\t\t}\n\t],\n\t\"EndStrategy\" : {\n\t\t\"DateOffset\" : {\n\t\t\t\"DateField\" : \"StartDate\",\n\t\t\t\"Offset\" : 1\n\t\t}\n\t},\n\t\"CensoringCriteria\" : [],\n\t\"CollapseSettings\" : {\n\t\t\"CollapseType\" : \"ERA\",\n\t\t\"EraPad\" : 0\n\t},\n\t\"CensorWindow\" : {}\n}"
+        },
+        {
+          "cohortId": 261,
+          "cohortName": "LCa_RQ2-outcome (SAE_VTE)",
+          "cohortDefinition": "{\n\t\"cdmVersionRange\" : \">=5.0.0\",\n\t\"PrimaryCriteria\" : {\n\t\t\"CriteriaList\" : [\n\t\t\t{\n\t\t\t\t\"ConditionOccurrence\" : {\n\t\t\t\t\t\"CodesetId\" : 3\n\t\t\t\t}\n\t\t\t}\n\t\t],\n\t\t\"ObservationWindow\" : {\n\t\t\t\"PriorDays\" : 0,\n\t\t\t\"PostDays\" : 0\n\t\t},\n\t\t\"PrimaryCriteriaLimit\" : {\n\t\t\t\"Type\" : \"All\"\n\t\t}\n\t},\n\t\"ConceptSets\" : [\n\t\t{\n\t\t\t\"id\" : 3,\n\t\t\t\"name\" : \"Venous thromboembolism \",\n\t\t\t\"expression\" : {\n\t\t\t\t\"items\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 43531681,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Acute deep vein thrombosis of lower limb\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"651000119108\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 443537,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Deep venous thrombosis of lower extremity\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"404223003\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 44782746,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Acute deep venous thrombosis\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"132281000119108\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 440417,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Pulmonary embolism\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"59282003\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"id\" : 4,\n\t\t\t\"name\" : \"[Demo for Shiny] NSCLC\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"items\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4115276,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Non-small cell lung cancer\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"254637007\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t}\n\t],\n\t\"QualifiedLimit\" : {\n\t\t\"Type\" : \"First\"\n\t},\n\t\"ExpressionLimit\" : {\n\t\t\"Type\" : \"All\"\n\t},\n\t\"InclusionRules\" : [\n\t\t{\n\t\t\t\"name\" : \"Adult\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"Type\" : \"ALL\",\n\t\t\t\t\"CriteriaList\" : [],\n\t\t\t\t\"DemographicCriteriaList\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"Age\" : {\n\t\t\t\t\t\t\t\"Value\" : 18,\n\t\t\t\t\t\t\t\"Op\" : \"gt\"\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"Groups\" : []\n\t\t\t}\n\t\t}\n\t],\n\t\"EndStrategy\" : {\n\t\t\"DateOffset\" : {\n\t\t\t\"DateField\" : \"StartDate\",\n\t\t\t\"Offset\" : 1\n\t\t}\n\t},\n\t\"CensoringCriteria\" : [],\n\t\"CollapseSettings\" : {\n\t\t\"CollapseType\" : \"ERA\",\n\t\t\"EraPad\" : 0\n\t},\n\t\"CensorWindow\" : {}\n}"
+        },
+        {
+          "cohortId": 258,
+          "cohortName": "LCa_RQ2-outcome (SAE_resp infections)",
+          "cohortDefinition": "{\n\t\"cdmVersionRange\" : \">=5.0.0\",\n\t\"PrimaryCriteria\" : {\n\t\t\"CriteriaList\" : [\n\t\t\t{\n\t\t\t\t\"ConditionOccurrence\" : {\n\t\t\t\t\t\"CodesetId\" : 1\n\t\t\t\t}\n\t\t\t}\n\t\t],\n\t\t\"ObservationWindow\" : {\n\t\t\t\"PriorDays\" : 0,\n\t\t\t\"PostDays\" : 0\n\t\t},\n\t\t\"PrimaryCriteriaLimit\" : {\n\t\t\t\"Type\" : \"All\"\n\t\t}\n\t},\n\t\"ConceptSets\" : [\n\t\t{\n\t\t\t\"id\" : 1,\n\t\t\t\"name\" : \"Pneumonia\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"items\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 257315,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Bacterial pneumonia\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"53084003\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4049965,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Fungal pneumonia\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"233613009\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4050872,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Pneumonia due to parasitic infestation\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"233620002\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 3178885,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Secondary pneumonia\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"130001000004105\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"Nebraska Lexicon\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 261326,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Viral pneumonia\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"75570004\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4238808,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Empyema of pleura\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"58554001\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 255848,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Pneumonia\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"233604007\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"id\" : 2,\n\t\t\t\"name\" : \"[Demo for Shiny] NSCLC\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"items\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4115276,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Non-small cell lung cancer\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"254637007\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t}\n\t],\n\t\"QualifiedLimit\" : {\n\t\t\"Type\" : \"First\"\n\t},\n\t\"ExpressionLimit\" : {\n\t\t\"Type\" : \"All\"\n\t},\n\t\"InclusionRules\" : [\n\t\t{\n\t\t\t\"name\" : \"Adult\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"Type\" : \"ALL\",\n\t\t\t\t\"CriteriaList\" : [],\n\t\t\t\t\"DemographicCriteriaList\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"Age\" : {\n\t\t\t\t\t\t\t\"Value\" : 18,\n\t\t\t\t\t\t\t\"Op\" : \"gt\"\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"Groups\" : []\n\t\t\t}\n\t\t}\n\t],\n\t\"EndStrategy\" : {\n\t\t\"DateOffset\" : {\n\t\t\t\"DateField\" : \"StartDate\",\n\t\t\t\"Offset\" : 1\n\t\t}\n\t},\n\t\"CensoringCriteria\" : [],\n\t\"CollapseSettings\" : {\n\t\t\"CollapseType\" : \"ERA\",\n\t\t\"EraPad\" : 0\n\t},\n\t\"CensorWindow\" : {}\n}"
+        }
+      ],
+      "attr_class": ["CohortDefinitionSharedResources", "SharedResources"]
+    }
+  ],
+  "moduleSpecifications": [
+    {
+      "module": "CohortGeneratorModule",
+      "settings": {
+        "generateStats": true
+      },
+      "attr_class": ["ModuleSpecifications", "CohortGeneratorModuleSpecifications"]
+    },
+    {
+      "module": "CohortDiagnosticsModule",
+      "settings": {
+        "runInclusionStatistics": true,
+        "runIncludedSourceConcepts": true,
+        "runOrphanConcepts": false,
+        "runTimeSeries": false,
+        "runVisitContext": true,
+        "runBreakdownIndexEvents": true,
+        "runIncidenceRate": false,
+        "runCohortRelationship": false,
+        "runTemporalCohortCharacterization": true,
+        "temporalCovariateSettings": {
+          "temporal": true,
+          "temporalSequence": false,
+          "DemographicsGender": true,
+          "DemographicsAge": true,
+          "DemographicsAgeGroup": true,
+          "DemographicsRace": true,
+          "DemographicsEthnicity": true,
+          "DemographicsIndexYear": true,
+          "DemographicsIndexMonth": true,
+          "DemographicsPriorObservationTime": true,
+          "DemographicsPostObservationTime": true,
+          "DemographicsTimeInCohort": true,
+          "DemographicsIndexYearMonth": true,
+          "ConditionOccurrence": true,
+          "ConditionEraStart": true,
+          "DrugEraStart": true,
+          "DrugEraGroupOverlap": true,
+          "DeviceExposure": true,
+          "Observation": true,
+          "CharlsonIndex": true,
+          "Dcsi": true,
+          "Chads2": true,
+          "Chads2Vasc": true,
+          "VisitCount": true,
+          "VisitConceptCount": true,
+          "temporalStartDays": [-9999, 0],
+          "temporalEndDays": [0, 9999],
+          "includedCovariateConceptIds": [],
+          "addDescendantsToInclude": false,
+          "excludedCovariateConceptIds": [],
+          "addDescendantsToExclude": false,
+          "includedCovariateIds": [],
+          "attr_class": "covariateSettings",
+          "attr_fun": "getDbDefaultCovariateData"
+        },
+        "minCharacterizationMean": 0.01,
+        "irWashoutPeriod": 0
+      },
+      "attr_class": ["ModuleSpecifications", "CohortDiagnosticsModuleSpecifications"]
+    },
+    {
+      "module": "CharacterizationModule",
+      "settings": {
+        "analysis": {
+          "timeToEventSettings": [
+            {
+              "targetIds": [312, 311],
+              "outcomeIds": [253, 260, 261, 258],
+              "attr_class": "timeToEventSettings"
+            }
+          ],
+          "dechallengeRechallengeSettings": [
+            {
+              "targetCohortDefinitionIds": [312, 311],
+              "outcomeCohortDefinitionIds": [253, 260, 261, 258],
+              "dechallengeStopInterval": 30,
+              "dechallengeEvaluationWindow": 30,
+              "attr_class": "dechallengeRechallengeSettings"
+            }
+          ],
+          "aggregateCovariateSettings": [
+            {
+              "targetIds": [312, 311],
+              "minPriorObservation": 365,
+              "outcomeIds": [253, 260, 261, 258],
+              "outcomeWashoutDays": 365,
+              "riskWindowStart": 0,
+              "startAnchor": "cohort start",
+              "riskWindowEnd": 0,
+              "endAnchor": "cohort end",
+              "covariateSettings": [
+                {
+                  "temporal": false,
+                  "temporalSequence": false,
+                  "DemographicsGender": true,
+                  "DemographicsAge": true,
+                  "DemographicsAgeGroup": true,
+                  "DemographicsRace": true,
+                  "DemographicsEthnicity": true,
+                  "DemographicsIndexYear": true,
+                  "DemographicsIndexMonth": true,
+                  "DemographicsPriorObservationTime": true,
+                  "DemographicsPostObservationTime": true,
+                  "DemographicsTimeInCohort": true,
+                  "ConditionGroupEraLongTerm": true,
+                  "ConditionGroupEraShortTerm": true,
+                  "DrugGroupEraLongTerm": true,
+                  "DrugGroupEraShortTerm": true,
+                  "DrugGroupEraOverlapping": true,
+                  "ProcedureOccurrenceLongTerm": true,
+                  "ProcedureOccurrenceShortTerm": true,
+                  "DeviceExposureLongTerm": true,
+                  "DeviceExposureShortTerm": true,
+                  "MeasurementLongTerm": true,
+                  "MeasurementShortTerm": true,
+                  "ObservationLongTerm": true,
+                  "ObservationShortTerm": true,
+                  "VisitConceptCountLongTerm": true,
+                  "VisitConceptCountShortTerm": true,
+                  "longTermStartDays": -365,
+                  "mediumTermStartDays": -180,
+                  "shortTermStartDays": -30,
+                  "endDays": 0,
+                  "includedCovariateConceptIds": [],
+                  "addDescendantsToInclude": false,
+                  "excludedCovariateConceptIds": [],
+                  "addDescendantsToExclude": false,
+                  "includedCovariateIds": [],
+                  "attr_class": "covariateSettings",
+                  "attr_fun": "getDbDefaultCovariateData"
+                }
+              ],
+              "caseCovariateSettings": {
+                "temporal": false,
+                "temporalSequence": false,
+                "ConditionGroupEraDuring": true,
+                "DrugGroupEraDuring": true,
+                "ProcedureOccurrenceDuring": true,
+                "DeviceExposureDuring": true,
+                "MeasurementDuring": true,
+                "ObservationDuring": true,
+                "VisitConceptCountDuring": true,
+                "includedCovariateConceptIds": [],
+                "addDescendantsToInclude": false,
+                "excludedCovariateConceptIds": [],
+                "addDescendantsToExclude": false,
+                "includedCovariateIds": [],
+                "attr_class": "covariateSettings",
+                "attr_fun": "Characterization::getDbDuringCovariateData"
+              },
+              "casePreTargetDuration": 365,
+              "casePostOutcomeDuration": 365,
+              "extractNonCaseCovariates": true,
+              "attr_class": "aggregateCovariateSettings"
+            },
+            {
+              "targetIds": [312, 311],
+              "minPriorObservation": 365,
+              "outcomeIds": [253, 260, 261, 258],
+              "outcomeWashoutDays": 365,
+              "riskWindowStart": 0,
+              "startAnchor": "cohort start",
+              "riskWindowEnd": 365,
+              "endAnchor": "cohort start",
+              "covariateSettings": [
+                {
+                  "temporal": false,
+                  "temporalSequence": false,
+                  "DemographicsGender": true,
+                  "DemographicsAge": true,
+                  "DemographicsAgeGroup": true,
+                  "DemographicsRace": true,
+                  "DemographicsEthnicity": true,
+                  "DemographicsIndexYear": true,
+                  "DemographicsIndexMonth": true,
+                  "DemographicsPriorObservationTime": true,
+                  "DemographicsPostObservationTime": true,
+                  "DemographicsTimeInCohort": true,
+                  "ConditionGroupEraLongTerm": true,
+                  "ConditionGroupEraShortTerm": true,
+                  "DrugGroupEraLongTerm": true,
+                  "DrugGroupEraShortTerm": true,
+                  "DrugGroupEraOverlapping": true,
+                  "ProcedureOccurrenceLongTerm": true,
+                  "ProcedureOccurrenceShortTerm": true,
+                  "DeviceExposureLongTerm": true,
+                  "DeviceExposureShortTerm": true,
+                  "MeasurementLongTerm": true,
+                  "MeasurementShortTerm": true,
+                  "ObservationLongTerm": true,
+                  "ObservationShortTerm": true,
+                  "VisitConceptCountLongTerm": true,
+                  "VisitConceptCountShortTerm": true,
+                  "longTermStartDays": -365,
+                  "mediumTermStartDays": -180,
+                  "shortTermStartDays": -30,
+                  "endDays": 0,
+                  "includedCovariateConceptIds": [],
+                  "addDescendantsToInclude": false,
+                  "excludedCovariateConceptIds": [],
+                  "addDescendantsToExclude": false,
+                  "includedCovariateIds": [],
+                  "attr_class": "covariateSettings",
+                  "attr_fun": "getDbDefaultCovariateData"
+                }
+              ],
+              "caseCovariateSettings": {
+                "temporal": false,
+                "temporalSequence": false,
+                "ConditionGroupEraDuring": true,
+                "DrugGroupEraDuring": true,
+                "ProcedureOccurrenceDuring": true,
+                "DeviceExposureDuring": true,
+                "MeasurementDuring": true,
+                "ObservationDuring": true,
+                "VisitConceptCountDuring": true,
+                "includedCovariateConceptIds": [],
+                "addDescendantsToInclude": false,
+                "excludedCovariateConceptIds": [],
+                "addDescendantsToExclude": false,
+                "includedCovariateIds": [],
+                "attr_class": "covariateSettings",
+                "attr_fun": "Characterization::getDbDuringCovariateData"
+              },
+              "casePreTargetDuration": 365,
+              "casePostOutcomeDuration": 365,
+              "extractNonCaseCovariates": true,
+              "attr_class": "aggregateCovariateSettings"
+            }
+          ],
+          "attr_class": "characterizationSettings"
+        },
+        "minCharacterizationMean": 0.01
+      },
+      "attr_class": ["ModuleSpecifications", "CharacterizationModuleSpecifications"]
+    },
+    {
+      "module": "CohortIncidenceModule",
+      "settings": {
+        "irDesign": {
+          "targetDefs": [
+            {
+              "id": 312,
+              "name": "Patient 2_LCa_with CKD"
+            },
+            {
+              "id": 311,
+              "name": "Patient 2_LCa_without CKD"
+            }
+          ],
+          "outcomeDefs": [
+            {
+              "id": 1,
+              "name": "LCa_RQ2-outcome (death)",
+              "cohortId": 253,
+              "cleanWindow": 365
+            },
+            {
+              "id": 2,
+              "name": "LCa_RQ2-outcome (SAE_sepsis)",
+              "cohortId": 260,
+              "cleanWindow": 365
+            },
+            {
+              "id": 3,
+              "name": "LCa_RQ2-outcome (SAE_VTE)",
+              "cohortId": 261,
+              "cleanWindow": 365
+            },
+            {
+              "id": 4,
+              "name": "LCa_RQ2-outcome (SAE_resp infections)",
+              "cohortId": 258,
+              "cleanWindow": 365
+            }
+          ],
+          "timeAtRiskDefs": [
+            {
+              "id": 1,
+              "start": {
+                "dateField": "start",
+                "offset": 0
+              },
+              "end": {
+                "dateField": "end",
+                "offset": 0
+              }
+            },
+            {
+              "id": 2,
+              "start": {
+                "dateField": "start",
+                "offset": 0
+              },
+              "end": {
+                "dateField": "start",
+                "offset": 365
+              }
+            }
+          ],
+          "analysisList": [
+            {
+              "targets": [312, 311],
+              "outcomes": [1, 2, 3, 4],
+              "tars": [1, 2]
+            }
+          ]
+        }
+      },
+      "attr_class": ["ModuleSpecifications", "CohortIncidenceModuleSpecifications"]
+    },
+    {
+      "module": "CohortMethodModule",
+      "settings": {
+        "cmAnalysisList": [
+          {
+            "analysisId": 1,
+            "description": "PS matching (1:1) and Cox/KM",
+            "getDbCohortMethodDataArgs": {
+              "studyStartDate": "",
+              "studyEndDate": "",
+              "firstExposureOnly": false,
+              "removeDuplicateSubjects": "keep all",
+              "restrictToCommonPeriod": false,
+              "washoutPeriod": 0,
+              "maxCohortSize": 0,
+              "covariateSettings": {
+                "temporal": false,
+                "temporalSequence": false,
+                "DemographicsGender": true,
+                "DemographicsAgeGroup": true,
+                "DemographicsRace": true,
+                "DemographicsEthnicity": true,
+                "ConditionOccurrenceLongTerm": true,
+                "ConditionOccurrenceShortTerm": true,
+                "ProcedureOccurrenceLongTerm": true,
+                "ProcedureOccurrenceShortTerm": true,
+                "longTermStartDays": -365,
+                "mediumTermStartDays": -180,
+                "shortTermStartDays": -30,
+                "endDays": 0,
+                "includedCovariateConceptIds": [],
+                "addDescendantsToInclude": false,
+                "excludedCovariateConceptIds": [3016723, 3013682, 3023103, 3019550, 3014576, 3006906, 3004501, 3015632, 21600722, 21600728, 21600713, 21600712, 21600735, 19017810, 1596977, 21603783, 46221581, 21600714, 21600001],
+                "addDescendantsToExclude": true,
+                "includedCovariateIds": [],
+                "attr_class": "covariateSettings",
+                "attr_fun": "getDbDefaultCovariateData"
+              },
+              "attr_class": "args"
+            },
+            "createStudyPopArgs": {
+              "firstExposureOnly": true,
+              "restrictToCommonPeriod": false,
+              "washoutPeriod": 0,
+              "removeDuplicateSubjects": "keep all",
+              "removeSubjectsWithPriorOutcome": true,
+              "priorOutcomeLookback": 99999,
+              "minDaysAtRisk": 1,
+              "maxDaysAtRisk": 99999,
+              "riskWindowStart": 1,
+              "startAnchor": "cohort start",
+              "riskWindowEnd": 9999,
+              "endAnchor": "cohort start",
+              "censorAtNewRiskWindow": false,
+              "attr_class": "args"
+            },
+            "createPsArgs": {
+              "maxCohortSizeForFitting": 250000,
+              "errorOnHighCorrelation": true,
+              "stopOnError": true,
+              "prior": {
+                "priorType": "laplace",
+                "variance": 1,
+                "exclude": 0,
+                "graph": null,
+                "neighborhood": null,
+                "useCrossValidation": true,
+                "forceIntercept": false,
+                "attr_class": "cyclopsPrior"
+              },
+              "control": {
+                "maxIterations": 1000,
+                "tolerance": 2e-07,
+                "convergenceType": "gradient",
+                "autoSearch": true,
+                "fold": 10,
+                "lowerLimit": 0.01,
+                "upperLimit": 20,
+                "gridSteps": 10,
+                "minCVData": 100,
+                "cvRepetitions": 1,
+                "noiseLevel": "quiet",
+                "threads": 1,
+                "seed": null,
+                "resetCoefficients": false,
+                "startingVariance": 0.01,
+                "useKKTSwindle": false,
+                "tuneSwindle": 10,
+                "selectorType": "auto",
+                "initialBound": 2,
+                "maxBoundCount": 5,
+                "algorithm": "ccd",
+                "doItAll": true,
+                "syncCV": false,
+                "attr_class": "cyclopsControl"
+              },
+              "estimator": "att",
+              "attr_class": "args"
+            },
+            "matchOnPsArgs": {
+              "caliper": 0.2,
+              "caliperScale": "standardized logit",
+              "maxRatio": 1,
+              "allowReverseMatch": false,
+              "attr_class": "args"
+            },
+            "computeSharedCovariateBalanceArgs": {
+              "maxCohortSize": 250000,
+              "attr_class": "args"
+            },
+            "computeCovariateBalanceArgs": {
+              "maxCohortSize": 250000,
+              "covariateFilter": {
+                "label": ["Age group", "Gender: female", "Race", "Ethnicity", "Medical history: General", "Medical history: Cardiovascular disease", "Medical history: Neoplasms", "Medication use"],
+                "analysisId": [3, 1, 4, 5, 210, 210, 210, 410],
+                "covariateIds": [null, "8532001", null, null, "4006969210;438409210;4212540210;255573210;201606210;4182210210;440383210;201820210;318800210;192671210;439727210;432867210;316866210;4104000210;433736210;80180210;255848210;140168210;4030518210;80809210;435783210;4279309210;81893210;81902210;197494210;4134440210", "313217210;381591210;317576210;321588210;316139210;4185932210;321052210;440417210;444247210", "4044013210;432571210;40481902210;443392210;4112853210;4180790210;443388210;197508210;200962210", "21601782410;21602796410;21604686410;21604389410;21603932410;21601387410;21602028410;21600960410;21601664410;21601744410;21601461410;21600046410;21603248410;21600712410;21603890410;21601853410;21604254410;21604489410;21604752410"],
+                "attr_class": ["spec_tbl_df", "tbl_df", "tbl", "data.frame"],
+                "attr_row.names": [1, 2, 3, 4, 5, 6, 7, 8],
+                "attr_spec": {
+                  "cols": {
+                    "label": [],
+                    "analysisId": [],
+                    "covariateIds": []
+                  },
+                  "default": [],
+                  "skip": 1
+                }
+              },
+              "attr_class": "args"
+            },
+            "fitOutcomeModelArgs": {
+              "modelType": "cox",
+              "stratified": true,
+              "useCovariates": false,
+              "inversePtWeighting": false,
+              "profileBounds": [-2.3026, 2.3026],
+              "prior": {
+                "priorType": "laplace",
+                "variance": 1,
+                "exclude": null,
+                "graph": null,
+                "neighborhood": null,
+                "useCrossValidation": true,
+                "forceIntercept": false,
+                "attr_class": "cyclopsPrior"
+              },
+              "control": {
+                "maxIterations": 1000,
+                "tolerance": 2e-07,
+                "convergenceType": "gradient",
+                "autoSearch": true,
+                "fold": 10,
+                "lowerLimit": 0.01,
+                "upperLimit": 20,
+                "gridSteps": 10,
+                "minCVData": 100,
+                "cvRepetitions": 10,
+                "noiseLevel": "quiet",
+                "threads": 1,
+                "seed": 1,
+                "resetCoefficients": true,
+                "startingVariance": 0.01,
+                "useKKTSwindle": false,
+                "tuneSwindle": 10,
+                "selectorType": "auto",
+                "initialBound": 2,
+                "maxBoundCount": 5,
+                "algorithm": "ccd",
+                "doItAll": true,
+                "syncCV": false,
+                "attr_class": "cyclopsControl"
+              },
+              "attr_class": "args"
+            },
+            "attr_class": "cmAnalysis"
+          }
+        ],
+        "targetComparatorOutcomesList": [
+          {
+            "targetId": 312,
+            "comparatorId": 311,
+            "outcomes": [
+              {
+                "outcomeId": 253,
+                "outcomeOfInterest": true,
+                "trueEffectSize": null,
+                "attr_class": "outcome"
+              },
+              {
+                "outcomeId": 260,
+                "outcomeOfInterest": true,
+                "trueEffectSize": null,
+                "attr_class": "outcome"
+              },
+              {
+                "outcomeId": 261,
+                "outcomeOfInterest": true,
+                "trueEffectSize": null,
+                "attr_class": "outcome"
+              },
+              {
+                "outcomeId": 258,
+                "outcomeOfInterest": true,
+                "trueEffectSize": null,
+                "attr_class": "outcome"
+              }
+            ],
+            "attr_class": "targetComparatorOutcomes"
+          }
+        ],
+        "refitPsForEveryOutcome": false,
+        "refitPsForEveryStudyPopulation": true,
+        "cmDiagnosticThresholds": {
+          "mdrrThreshold": 10,
+          "easeThreshold": 0.25,
+          "sdmThreshold": 0.1,
+          "equipoiseThreshold": 0.2,
+          "generalizabilitySdmThreshold": 1,
+          "attr_class": "CmDiagnosticThresholds"
+        }
+      },
+      "attr_class": ["ModuleSpecifications", "CohortMethodModuleSpecifications"]
+    }
+  ],
+  "attr_class": "AnalysisSpecifications"
+}

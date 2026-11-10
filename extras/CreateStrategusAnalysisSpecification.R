@@ -25,7 +25,7 @@ suppressPackageStartupMessages(library(Strategus))
 targetIds  <- c(312, 311)
 outcomeIds <- c(253, 257, 260, 261, 258)
 
-outputFile <- "extras/StrategusAnalysisSpecification.json"
+outputFile <- "extras/StrategusAnalysisSpecification_lite.json"
 # ===========================================================================
 
 # --- Cohorts (read straight from the package's inst/ folder) ---------------
@@ -83,7 +83,7 @@ temporalCovariateSettings <- FeatureExtraction::createTemporalCovariateSettings(
   useDrugEraStart                     = FALSE,
   useMeasurement                      = FALSE,
   useConditionEraStart                = TRUE,
-  useConditionEraOverlap              = TRUE,
+  useConditionEraOverlap              = FALSE,
   useConditionEraGroupStart           = FALSE, # https://github.com/OHDSI/FeatureExtraction/issues/144
   useConditionEraGroupOverlap         = FALSE,
   useDrugExposure                     = FALSE, # too many concept IDs
@@ -137,12 +137,12 @@ cohortDiagnosticsSpecs  <- cohortDiagnosticsModule$createModuleSpecifications(
   cohortIds = NULL,
   runInclusionStatistics = TRUE,
   runIncludedSourceConcepts = TRUE,
-  runOrphanConcepts = TRUE,
+  runOrphanConcepts = FALSE,
   runTimeSeries = FALSE,
   runVisitContext = TRUE,
   runBreakdownIndexEvents = TRUE,
-  runIncidenceRate = TRUE,
-  runCohortRelationship = TRUE,
+  runIncidenceRate = FALSE,
+  runCohortRelationship = FALSE,
   runTemporalCohortCharacterization = TRUE,
   temporalCovariateSettings = temporalCovariateSettings,
   minCharacterizationMean = 0.01,
@@ -287,7 +287,10 @@ cmAnalysis <- CohortMethod::createCmAnalysis(
   createStudyPopArgs = createStudyPopArgs,
   createPsArgs = createPsArgs,
   matchOnPsArgs = matchOnPsArgs,
-  fitOutcomeModelArgs = fitOutcomeModelArgs
+  fitOutcomeModelArgs = fitOutcomeModelArgs,
+  computeSharedCovariateBalanceArgs = CohortMethod::createComputeCovariateBalanceArgs(),
+  computeCovariateBalanceArgs = CohortMethod::createComputeCovariateBalanceArgs(
+    covariateFilter = CohortMethod::getDefaultCmTable1Specifications())
 )
 
 outcomes <- lapply(outcomeIds, function(outcomeId) {
